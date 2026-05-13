@@ -14,7 +14,7 @@ humanOutput.innerHTML = "test";
 function humanPick() {
     humanChoice = event.target.id;
     humanOutput.innerHTML = humanChoice;
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
+    let randomNumber = Math.floor(Math.random() * 3) + 1;
     if (randomNumber === 1) {
         computerChoice = 'steen';
     }
@@ -25,47 +25,48 @@ function humanPick() {
         computerChoice = 'papier';
     }
     computerOutput.innerHTML = computerChoice;
-};
+}
 
+function checkWinner() {
+
+    if (humanChoice === "steen") {
+        winnerChoice = {
+            steen: "gelijk spel.",
+            papier: "je hebt verloren.",
+            schaar: "je hebt gewonnen!"
+        }[computerChoice];
+    }
+
+    if (humanChoice === "papier") {
+        winnerChoice = {
+            steen: "je hebt gewonnen!",
+            papier: "gelijk spel.",
+            schaar: "je hebt verloren."
+        }[computerChoice];
+    }
+
+    if (humanChoice === "schaar") {
+        winnerChoice = {
+            steen: "je hebt verloren.",
+            papier: "je hebt gewonnen!",
+            schaar: "gelijk spel."
+        }[computerChoice];
+    }
+
+    winnerOutput.innerHTML = winnerChoice;
+}
 
 steenBtn.addEventListener("click", function (event) {
-    humanPick()
-    if (computerChoice === 'schaar') {
-        winnerChoice = 'je hebt gewonnen!';
-    }
-    if (computerChoice === 'steen') {
-        winnerChoice = 'gelijk spel.';
-    }
-    if (computerChoice === 'papier') {
-        winnerChoice = 'je hebt verloren.';
-    }
-    winnerOutput.innerHTML = winnerChoice;
+    humanPick(event);
+    checkWinner();
 });
 
 papierBtn.addEventListener("click", function (event) {
-    humanPick()
-    if (computerChoice === 'steen') {
-        winnerChoice = 'je hebt gewonnen!';
-    }
-    if (computerChoice === 'schaar') {
-        winnerChoice = 'je hebt verloren.';
-    }
-    if (computerChoice === 'papier') {
-        winnerChoice = 'gelijk spel.';
-    }
-    winnerOutput.innerHTML = winnerChoice;
+    humanPick(event);
+    checkWinner();
 });
 
 schaarBtn.addEventListener("click", function (event) {
-    humanPick()
-    if (computerChoice === 'schaar') {
-        winnerChoice = 'gelijk spel.';
-    }
-    if (computerChoice === 'steen') {
-        winnerChoice = 'je hebt verloren.';
-    }
-    if (computerChoice === 'papier') {
-        winnerChoice = 'je hebt gewonnen!';
-    }
-    winnerOutput.innerHTML = winnerChoice;
+    humanPick(event);
+    checkWinner();
 });
