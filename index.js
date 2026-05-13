@@ -1,7 +1,6 @@
 const humanOutput = document.querySelector("#human");
 const computerOutput = document.querySelector("#CPU");
 const winnerOutput = document.querySelector("#winner");
-
 const btns = document.querySelectorAll("button");
 
 let humanChoice = "";
