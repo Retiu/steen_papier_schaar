@@ -31,36 +31,29 @@ function humanPick() {
 
 // functie om te chekcen wie heeft geownwen
 function checkWinner() {
-    if (humanChoice === "steen")
-        // als speler de steen heeft gekozen dan vergelijk die keuze met de opties beneden voor de win or verlies conditite
-        winnerChoice = {
+    winnerChoice = {
+        // kijk wat de speler heeft gekozen en vergeijljk het met wat de cpu heeft gorozkein en kij kdan wie heeft gewonenn  of vleroen
+        steen: {
             steen: "gelijk spel.",
             papier: "je hebt verloren.",
             schaar: "je hebt gewonnen!"
-        }[computerChoice];
-
-    if (humanChoice === "papier") {
-        // als speler papier heeft gekozen dan vergelijk die keuze met de opties beneden voor de win or verlies conditite
-        winnerChoice = {
+        },
+        papier: {
             steen: "je hebt gewonnen!",
             papier: "gelijk spel.",
             schaar: "je hebt verloren."
-        }[computerChoice];
-    }
-
-    if (humanChoice === "schaar") {
-        // als speler de schaar heeft gekozen dan vergelijk die keuze met de opties beneden voor de win or verlies conditite
-        winnerChoice = {
-            steen: "je hebt verloren.",
-            papier: "je hebt gewonnen!",
-            schaar: "gelijk spel."
-        }[computerChoice];
-    }
+        },
+        schaar: {
+            steen: "je hebt gewonnen!",
+            papier: "gelijk spel.",
+            schaar: "je hebt verloren."
+        }
+    }[humanChoice][computerChoice];
     winnerOutput.innerHTML = winnerChoice;
 }
 
-btns.forEach(function(btn) {
-    btn.addEventListener("click", function(event) {
+btns.forEach(function (btn) {
+    btn.addEventListener("click", function (event) {
         // kijtk naar wat is gekozne doro de speler
         humanPick(event);
         // checken wie er geowneon heef
