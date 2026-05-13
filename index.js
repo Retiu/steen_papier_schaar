@@ -1,10 +1,8 @@
 const humanOutput = document.querySelector("#human");
 const computerOutput = document.querySelector("#CPU");
 const winnerOutput = document.querySelector("#winner");
-const steenBtn = document.querySelector("#steen");
-const papierBtn = document.querySelector("#papier");
-const schaarBtn = document.querySelector("#schaar");
 
+const btns = document.querySelectorAll("button");
 
 let humanChoice = "";
 let computerChoice = "";
@@ -61,20 +59,11 @@ function checkWinner() {
     winnerOutput.innerHTML = winnerChoice;
 }
 
-steenBtn.addEventListener("click", function (event) {
-    // kijkt wat de speler heeft gekozen en checkt dan wie gewonnen heeft met de functie hierboven
-    humanPick(event);
-    checkWinner();
-});
-
-papierBtn.addEventListener("click", function (event) {
-    // kijkt wat de speler heeft gekozen en checkt dan wie gewonnen heeft met de functie hierboven
-    humanPick(event);
-    checkWinner();
-});
-
-schaarBtn.addEventListener("click", function (event) {
-    // kijkt wat de speler heeft gekozen en checkt dan wie gewonnen heeft met de functie hierboven
-    humanPick(event);
-    checkWinner();
+btns.forEach(function(btn) {
+    btn.addEventListener("click", function(event) {
+        // kijtk naar wat is gekozne doro de speler
+        humanPick(event);
+        // checken wie er geowneon heef
+        checkWinner();
+    });
 });
