@@ -11,8 +11,7 @@ let winnerChoice = "";
 
 humanOutput.innerHTML = "test";
 
-
-steenBtn.addEventListener("click", function (event) {
+function humanPick() {
     humanChoice = event.target.id;
     humanOutput.innerHTML = humanChoice;
     const randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -26,6 +25,11 @@ steenBtn.addEventListener("click", function (event) {
         computerChoice = 'papier';
     }
     computerOutput.innerHTML = computerChoice;
+};
+
+
+steenBtn.addEventListener("click", function (event) {
+    humanPick()
     if (computerChoice === 'schaar') {
         winnerChoice = 'je hebt gewonnen!';
     }
@@ -39,19 +43,7 @@ steenBtn.addEventListener("click", function (event) {
 });
 
 papierBtn.addEventListener("click", function (event) {
-    humanChoice = event.target.id;
-    humanOutput.innerHTML = humanChoice;
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
-    if (randomNumber === 1) {
-        computerChoice = 'steen';
-    }
-    if (randomNumber === 2) {
-        computerChoice = 'schaar';
-    }
-    if (randomNumber === 3) {
-        computerChoice = 'papier';
-    }
-    computerOutput.innerHTML = computerChoice;
+    humanPick()
     if (computerChoice === 'steen') {
         winnerChoice = 'je hebt gewonnen!';
     }
@@ -65,19 +57,7 @@ papierBtn.addEventListener("click", function (event) {
 });
 
 schaarBtn.addEventListener("click", function (event) {
-    humanChoice = event.target.id;
-    humanOutput.innerHTML = humanChoice;
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
-    if (randomNumber === 1) {
-        computerChoice = 'steen';
-    }
-    if (randomNumber === 2) {
-        computerChoice = 'schaar';
-    }
-    if (randomNumber === 3) {
-        computerChoice = 'papier';
-    }
-    computerOutput.innerHTML = computerChoice;
+    humanPick()
     if (computerChoice === 'schaar') {
         winnerChoice = 'gelijk spel.';
     }
