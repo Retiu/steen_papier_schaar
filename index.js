@@ -16,14 +16,16 @@ function humanPick() {
     humanOutput.innerHTML = humanChoice;
     // cpu willekeurige keuze
     let randomNumber = Math.floor(Math.random() * 3) + 1;
-    if (randomNumber === 1) {
-        computerChoice = 'steen';
-    }
-    if (randomNumber === 2) {
-        computerChoice = 'schaar';
-    }
-    if (randomNumber === 3) {
-        computerChoice = 'papier';
+    switch (randomNumber) {
+        case 1:
+            computerChoice = 'steen';
+            break;
+        case 2:
+            computerChoice = 'schaar';
+            break;
+        case 3:
+            computerChoice = 'papier';
+            break;
     }
     computerOutput.innerHTML = computerChoice;
 }
@@ -43,9 +45,9 @@ function checkWinner() {
             schaar: "je hebt verloren."
         },
         schaar: {
-            steen: "je hebt gewonnen!",
-            papier: "gelijk spel.",
-            schaar: "je hebt verloren."
+            steen: "je hebt verloren.",
+            papier: "je hebt gewonnen!",
+            schaar: "gelijk spel."
         }
     }[humanChoice][computerChoice];
     winnerOutput.innerHTML = winnerChoice;
