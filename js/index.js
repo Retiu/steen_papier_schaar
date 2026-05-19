@@ -2,10 +2,13 @@ const humanOutput = document.querySelector("#human");
 const computerOutput = document.querySelector("#CPU");
 const winnerOutput = document.querySelector("#winner");
 const btns = document.querySelectorAll("button");
+const highscoresOutput = document.querySelector("#highscore");
 
 let humanChoice = "";
 let computerChoice = "";
 let winnerChoice = "";
+let score = 0;
+let highscore = 0;
 
 // placeholder test
 humanOutput.innerHTML = "test";
@@ -18,13 +21,13 @@ function humanPick() {
     let randomNumber = Math.floor(Math.random() * 3) + 1;
     switch (randomNumber) {
         case 1:
-            computerChoice = 'steen';
+            computerChoice = 'rock';
             break;
         case 2:
-            computerChoice = 'schaar';
+            computerChoice = 'scissors';
             break;
         case 3:
-            computerChoice = 'papier';
+            computerChoice = 'paper';
             break;
     }
     computerOutput.innerHTML = computerChoice;
@@ -34,23 +37,36 @@ function humanPick() {
 function checkWinner() {
     winnerChoice = {
         // kijk wat de speler heeft gekozen en vergeijljk het met wat de cpu heeft gorozkein en kij kdan wie heeft gewonenn  of vleroen
-        steen: {
-            steen: "gelijk spel.",
-            papier: "je hebt verloren.",
-            schaar: "je hebt gewonnen!"
+        rock: {
+            rock: "tie.",
+            paper: "you lost.",
+            scissors: "you won!"
         },
-        papier: {
-            steen: "je hebt gewonnen!",
-            papier: "gelijk spel.",
-            schaar: "je hebt verloren."
+        paper: {
+            rock: "you won!",
+            paper: "tie.",
+            scissors: "you lost."
         },
-        schaar: {
-            steen: "je hebt verloren.",
-            papier: "je hebt gewonnen!",
-            schaar: "gelijk spel."
+        scissors: {
+            rock: "you lost.",
+            paper: "you won!",
+            scissors: "tie."
         }
     }[humanChoice][computerChoice];
     winnerOutput.innerHTML = winnerChoice;
+}
+
+function updateScore() {
+    if (winnerChoice === "you won!") {
+        score++;
+        if (score > highscore) {
+            highscore = score;
+            document.querySelector("#highscore").innerHTML = "" + highscore;
+        }
+    } else if (winnerChoice === "you lost." || winnerChoice === "tie.") {
+        score = 0;
+    }
+    document.querySelector("#currentscore").innerHTML = "" + score;
 }
 
 btns.forEach(function (btn) {
@@ -59,5 +75,6 @@ btns.forEach(function (btn) {
         humanPick(event);
         // checken wie er geowneon heef
         checkWinner();
+        updateScore(); // add this
     });
 });
