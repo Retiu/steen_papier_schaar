@@ -1,3 +1,6 @@
+<?php
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -14,5 +17,5 @@
 <button id="schaar">Schaar</button>
 
 </body>
-<script src="index.js"></script>
+<script src="js/index.js"></script>
 </html>
