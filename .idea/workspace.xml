@@ -41,6 +41,9 @@
     &quot;accountId&quot;: &quot;4cd2acd7-439d-4aea-bd17-152dc53364f4&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="AISelfReview" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -111,6 +114,7 @@
       <workItem from="1778666274857" duration="4041000" />
       <workItem from="1779088510134" duration="3627000" />
       <workItem from="1779176740972" duration="752000" />
+      <workItem from="1779261900494" duration="3142000" />
     </task>
     <servers />
   </component>

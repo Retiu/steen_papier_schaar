@@ -1,7 +1,7 @@
 const humanOutput = document.querySelector("#human");
 const computerOutput = document.querySelector("#CPU");
 const winnerOutput = document.querySelector("#winner");
-const btns = document.querySelectorAll("button");
+const btns = document.querySelectorAll("#rock, #paper, #scissors");
 const highscoresOutput = document.querySelector("#highscore");
 
 let humanChoice = "";
@@ -55,6 +55,12 @@ function checkWinner() {
     }[humanChoice][computerChoice];
     winnerOutput.innerHTML = winnerChoice;
 }
+let sfxMuted = false;
+
+document.getElementById('mutesfx').addEventListener('click', () => {
+    sfxMuted = !sfxMuted;
+    document.getElementById('mutesfx').textContent = sfxMuted ? 'Unmute SFX' : 'Mute SFX';
+});
 
 function updateScore() {
     if (winnerChoice === "you won!") {
@@ -69,6 +75,25 @@ function updateScore() {
     document.querySelector("#currentscore").innerHTML = "" + score;
 }
 
+function playSound() {
+    if (winnerChoice === "you lost." && humanChoice === "paper" && computerChoice === "scissors" && !sfxMuted) {
+        const sfx = new Audio('audio/sfx/sfx_scissorcutpaper.mp3');
+        sfx.play();
+    };
+    if (winnerChoice === "you won!" && humanChoice === "scissors" && computerChoice === "paper" && !sfxMuted) {
+        const sfx = new Audio('audio/sfx/sfx_scissorcutpaper.mp3');
+        sfx.play();
+    };
+    if (winnerChoice === "you won!" && humanChoice === "rock" && computerChoice === "scissors" && !sfxMuted) {
+        const sfx = new Audio('audio/sfx/sfx_rockbeatscissor-v3.mp3');
+        sfx.play();
+    };
+    if (winnerChoice === "you lost." && humanChoice === "scissors" && computerChoice === "rock" && !sfxMuted) {
+        const sfx = new Audio('audio/sfx/sfx_rockbeatscissor-v3.mp3');
+        sfx.play();
+    };
+}
+
 btns.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
         // kijtk naar wat is gekozne doro de speler
@@ -76,5 +101,6 @@ btns.forEach(function (btn) {
         // checken wie er geowneon heef
         checkWinner();
         updateScore(); // add this
+        playSound();
     });
 });

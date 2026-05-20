@@ -22,6 +22,14 @@ Highscore: <span id="highscore"></span>
 <button id="paper">Paper</button>
 <button id="scissors">Scissors</button>
 
+<br>
+<br>
+<button id="mutesfx">Mute SFX</button>
+<br>
+<br>
+
+<iframe src="bgm.php" style="border:none; width:440px; height:520px;"></iframe>
+
 </body>
 <script src="js/index.js"></script>
 </html>
