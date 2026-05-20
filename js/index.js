@@ -9,6 +9,9 @@ let computerChoice = "";
 let winnerChoice = "";
 let score = 0;
 let highscore = 0;
+let winsScore = 0;
+let lossesScore = 0;
+let tiesScore = 0;
 let sfxMuted = false;
 let buttonsfxMuted = false;
 let newHighscoreReached = false;
@@ -53,8 +56,9 @@ function playSfxFadeIn(audio, targetVolume, delay = 500, fadeDuration = 500) {
 humanOutput.innerHTML = "test";
 
 // speler keuzes
-function humanPick() {
-    humanChoice = event.target.id;
+function humanPick(event) {
+    const btn = event.target.closest('button');
+    humanChoice = btn.id;
     humanOutput.innerHTML = humanChoice;
     // cpu willekeurige keuze
     let randomNumber = Math.floor(Math.random() * 3) + 1;
@@ -95,9 +99,9 @@ function checkWinner() {
     winnerOutput.innerHTML = winnerChoice;
     const winnerEl = document.getElementById('winner');
     winnerEl.classList.remove('won', 'lost', 'tie');
-    if (winnerChoice === 'you won!')  winnerEl.classList.add('won');
+    if (winnerChoice === 'you won!') winnerEl.classList.add('won');
     if (winnerChoice === 'you lost.') winnerEl.classList.add('lost');
-    if (winnerChoice === 'tie.')      winnerEl.classList.add('tie');
+    if (winnerChoice === 'tie.') winnerEl.classList.add('tie');
 }
 
 
@@ -134,6 +138,21 @@ function updateScore() {
     document.querySelector("#currentscore").innerHTML = "" + score;
 }
 
+function WinsLosses() {
+    if (winnerChoice === "you won!") {
+        winsScore++
+        document.querySelector("#winscore").innerHTML = "" + winsScore;
+    }
+    if (winnerChoice === "tie.") {
+        tiesScore++
+        document.querySelector("#tiescore").innerHTML = "" + tiesScore;
+    }
+    if (winnerChoice === "you lost.") {
+        lossesScore++
+        document.querySelector("#losescore").innerHTML = "" + lossesScore;
+    }
+}
+
 function playSound() {
     if ((winnerChoice === "you lost." && humanChoice === "paper" && computerChoice === "scissors" ||
             winnerChoice === "you won!" && humanChoice === "scissors" && computerChoice === "paper")
@@ -168,6 +187,7 @@ btns.forEach(function (btn) {
         // checken wie er geowneon heef
         checkWinner();
         updateScore(); // add this
+        WinsLosses()
         playSound();
     });
 });

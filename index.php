@@ -35,16 +35,28 @@
         <p class="card-label">Score</p>
         <div class="score-row">
             <div class="score-cell">
-                <div class="cell-label">Current</div>
+                <div class="cell-label">Score</div>
                 <div class="cell-value" id="currentscore">0</div>
             </div>
             <div class="score-cell">
-                <div class="cell-label">Highscore</div>
+                <div class="cell-label">Best</div>
                 <div class="cell-value" id="highscore">0</div>
+            </div>
+
+            <div class="score-cell">
+                <div class="cell-label">Win</div>
+                <div class="cell-value" id="winscore">0</div>
+            </div>
+            <div class="score-cell">
+                <div class="cell-label">Tie</div>
+                <div class="cell-value" id="tiescore">0</div>
+            </div>
+            <div class="score-cell">
+                <div class="cell-label">Lose</div>
+                <div class="cell-value" id="losescore">0</div>
             </div>
         </div>
     </div>
-
     <!-- choices -->
     <div class="card">
         <p class="card-label">Your Move</p>

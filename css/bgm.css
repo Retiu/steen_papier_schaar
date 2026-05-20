@@ -319,6 +319,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     letter-spacing: .12em;
     text-transform: uppercase;
 }
+
 .track-title {
     font-family: 'Syne Mono', monospace;
     font-style: normal;
@@ -337,13 +338,17 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .track-artists {
     font-size: .7rem;
-    color: var(--muted);
+    color: var(--amber);
     margin-top: .2rem;
     white-space: nowrap;
     overflow: hidden;
@@ -351,19 +356,38 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .track-artists a {
-    color: var(--amber-dim);
+    color: var(--amber);
     text-decoration: none;
     transition: color .15s;
 }
 
 .track-artists a:hover {
-    color: var(--amber);
+    color: var(--amber-dim);
 }
 
 .track-artists .separator {
     margin: 0 .25em;
-    color: var(--groove);
+    color: var(--amber-dim);
 }
+
+.track-album {
+    font-size: .65rem;
+    color: var(--amber-dim);
+    margin-top: .1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-album a {
+    color: var(--amber-dim);
+    text-decoration: none;
+}
+
+.track-album a:hover {
+    color: var(--muted);
+}
+
 
 .release-link {
     color: var(--groove);
@@ -386,4 +410,36 @@ input[type=range]::-webkit-slider-thumb:hover {
 .track-title a:hover {
     color: var(--amber);
     border-bottom-color: var(--amber);
+}
+
+.now-playing-inner {
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+}
+
+.cover-art {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid var(--groove);
+    flex-shrink: 0;
+    display: none;
+}
+
+.cover-art.visible {
+    display: block;
+}
+
+.now-playing-text {
+    flex: 1;
+    min-width: 0;
+}
+.track-cover {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    border-radius: 1px;
+    flex-shrink: 0;
 }

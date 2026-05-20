@@ -1,18 +1,23 @@
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: clip;
+}
 
 :root {
-    --bg:        #1a120b;
-    --surface:   #2c1e13;
-    --groove:    #3d2b1f;
-    --amber:     #e8a838;
+    --bg: #1a120b;
+    --surface: #2c1e13;
+    --groove: #3d2b1f;
+    --amber: #e8a838;
     --amber-dim: #b07820;
-    --cream:     #f5e9d0;
-    --muted:     #8a6a50;
-    --active:    #f0c060;
-    --glow:      rgba(232,168,56,.18);
-    --won:       #7ecf82;
-    --lost:      #cf7e7e;
-    --tie:       #8a6a50;
+    --cream: #f5e9d0;
+    --muted: #8a6a50;
+    --active: #f0c060;
+    --glow: rgba(232, 168, 56, .18);
+    --won: #7ecf82;
+    --lost: #cf7e7e;
+    --tie: #8a6a50;
 }
 
 body {
@@ -28,14 +33,17 @@ body {
 
 body::before {
     content: '';
-    position: fixed; inset: 0;
+    position: fixed;
+    inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* ── layout ── */
 .game-col {
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -45,7 +53,8 @@ body::before {
 }
 
 .bgm-col {
-    position: relative; z-index: 1;
+    position: relative;
+    z-index: 1;
     padding-top: 2rem;
     flex-shrink: 0;
 }
@@ -130,9 +139,17 @@ body::before {
     transition: color .2s;
 }
 
-#winner.won  { color: var(--won); }
-#winner.lost { color: var(--lost); }
-#winner.tie  { color: var(--tie); }
+#winner.won {
+    color: var(--won);
+}
+
+#winner.lost {
+    color: var(--lost);
+}
+
+#winner.tie {
+    color: var(--tie);
+}
 
 /* ── score ── */
 .score-row {
@@ -235,6 +252,6 @@ body::before {
 .bgm-col iframe {
     border: none;
     width: 440px;
-    height: 730px;
+    height: 725px;
     display: block;
 }

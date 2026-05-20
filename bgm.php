@@ -10,7 +10,11 @@
           rel="stylesheet">
     <link rel="stylesheet" href="css/bgm.css">
     <style>
-        html, body { height: 100%; overflow: hidden; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
         .player {
             height: 100vh;
             display: flex;
@@ -18,15 +22,26 @@
             max-width: 420px;
             overflow: hidden;
         }
+
         .tracklist {
             flex: 1;
             overflow-y: auto;
             scrollbar-width: thin;
             scrollbar-color: var(--groove) transparent;
         }
-        .tracklist::-webkit-scrollbar { width: 4px; }
-        .tracklist::-webkit-scrollbar-track { background: transparent; }
-        .tracklist::-webkit-scrollbar-thumb { background: var(--groove); border-radius: 2px; }
+
+        .tracklist::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .tracklist::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .tracklist::-webkit-scrollbar-thumb {
+            background: var(--groove);
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -34,12 +49,18 @@
 <div class="player">
     <p class="label">Now Playing</p>
     <div class="now-playing">
-        <div class="track-title" id="trackTitle">—</div>
-        <div class="track-artists" id="trackArtists"></div>
-        <div class="track-index" id="trackIndex">Select a track</div>
-        <div class="bars" id="bars">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
+        <div class="now-playing-inner">
+            <img id="coverArt" src="" alt="" class="cover-art">
+            <div class="now-playing-text">
+                <div class="track-title" id="trackTitle">—</div>
+                <div class="track-artists" id="trackArtists"></div>
+                <div class="track-album" id="trackAlbum"></div>
+                <div class="track-index" id="trackIndex">Select a track</div>
+                <div class="bars" id="bars">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
         </div>
     </div>
 

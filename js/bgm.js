@@ -2,95 +2,121 @@ const trackList = [
     {
         url: 'audio/bgm/41de54a90332c5e211350dfeae7c6de1',
         title: 'Russet Dreams',
+        album: 'Russet Dreams',
+        cover: 'img/covers/d1f4c27fcb5f893a5fc80022ed0c958d',
         artists: [
-            { name: 'iBug', url: 'https://untonemusic.com/profile/ibug' }
+            {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
         releaseUrl: 'https://untonemusic.com/release/russet-dreams'
     },
     {
         url: 'audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2',
         title: "The King's Crumpets",
+        album: 'Russet Dreams',
+        cover: 'img/covers/d1f4c27fcb5f893a5fc80022ed0c958d',
         artists: [
-            { name: 'iBug', url: 'https://untonemusic.com/profile/ibug' }
+            {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
         releaseUrl: 'https://untonemusic.com/release/russet-dreams'
     },
     {
         url: 'audio/bgm/c465432faff516c77e654ffbaa58f88a',
         title: 'Poached',
+        album: 'Russet Dreams',
+        cover: 'img/covers/d1f4c27fcb5f893a5fc80022ed0c958d',
         artists: [
-            { name: 'iBug', url: 'https://untonemusic.com/profile/ibug' }
+            {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
         releaseUrl: 'https://untonemusic.com/release/russet-dreams'
     },
     {
         url: 'audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429',
         title: 'Scorched Sand',
+        album: 'Russet Dreams',
+        cover: 'img/covers/d1f4c27fcb5f893a5fc80022ed0c958d',
         artists: [
-            { name: 'iBug', url: 'https://untonemusic.com/profile/ibug' }
+            {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
         releaseUrl: 'https://untonemusic.com/release/russet-dreams'
     },
     {
+        url: 'audio/bgm/d1bfcc8ddb43f9f1d667d04031aa3584',
+        title: 'Fade Away',
+        album: 'Fade Away',
+        cover: 'img/covers/f483286478886736b8f3267a1e615f00',
+        artists: [
+            {name: 'Stedcoat', url: 'https://untonemusic.com/profile/stedcoat'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/fade-away'
+    },
+    {
         url: 'audio/bgm/7e7b098a680e76a7024f48fcfc5ec539',
         title: 'Deserted Spirits',
+        album: '',
+        cover: '',
         artists: [
-            { name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter' },
-            { name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing' }
+            {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
+            {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
         releaseUrl: ''
     },
     {
         url: 'audio/bgm/befa2c5a5a8ed06c6b6f1984ec7cadd3',
         title: 'Stars',
+        album: '',
+        cover: '',
         artists: [
-            { name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter' },
-            { name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing' }
+            {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
+            {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
         releaseUrl: ''
     },
     {
         url: 'audio/bgm/2946b2329d6dab1a9758ad80b32825d0',
         title: 'Falling Time',
+        album: '',
+        cover: '',
         artists: [
-            { name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter' },
-            { name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing' }
+            {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
+            {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
         releaseUrl: ''
     },
     {
         url: 'audio/bgm/f2bf89c471ee351cd0913fb387e41aca',
         title: 'Falling Time (Instrumental)',
+        album: '',
+        cover: '',
         artists: [
-            { name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter' },
-            { name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing' }
+            {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
+            {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
         releaseUrl: ''
     },
 ];
 
-const titleEl   = document.getElementById('trackTitle');
-const indexEl   = document.getElementById('trackIndex');
-const barsEl    = document.getElementById('bars');
+const titleEl = document.getElementById('trackTitle');
+const indexEl = document.getElementById('trackIndex');
+const barsEl = document.getElementById('bars');
 const tracklist = document.getElementById('tracklist');
-const btnPlay   = document.getElementById('btnPlay');
-const btnPrev   = document.getElementById('btnPrev');
-const btnNext   = document.getElementById('btnNext');
+const btnPlay = document.getElementById('btnPlay');
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
 const volSlider = document.getElementById('volSlider');
-const volVal    = document.getElementById('volVal');
+const volVal = document.getElementById('volVal');
 const seekSlider = document.getElementById('seekSlider');
-const seekVal    = document.getElementById('seekVal');
+const seekVal = document.getElementById('seekVal');
 
-const ctx        = new AudioContext();
-const gainNode   = ctx.createGain();
+const ctx = new AudioContext();
+const gainNode = ctx.createGain();
 gainNode.gain.value = volSlider.value / 100;
 gainNode.connect(ctx.destination);
 
 const buffers = new Array(trackList.length).fill(null);
-let current    = -1;
-let playing    = false;
+let current = -1;
+let playing = false;
 let sourceNode = null;
-let startTime  = 0;   // ctx.currentTime when playback started
+let startTime = 0;   // ctx.currentTime when playback started
 let startOffset = 0;  // how far into the track we started from
 
 // decode all tracks upfront
@@ -109,7 +135,11 @@ trackList.forEach((t, i) => {
 trackList.forEach((t, i) => {
     const btn = document.createElement('button');
     btn.className = 'track-btn';
-    btn.innerHTML = `<span class="num">${String(i + 1).padStart(2, '0')}</span>${t.title}`;
+    btn.innerHTML = `
+    <span class="num">${String(i + 1).padStart(2, '0')}</span>
+    ${t.cover ? `<img src="${t.cover}" class="track-cover" alt="">` : ''}
+    ${t.title}
+`;
     btn.addEventListener('click', () => loadTrack(i, true));
     tracklist.appendChild(btn);
 });
@@ -129,7 +159,7 @@ function getCurrentTime() {
     return startOffset + (ctx.currentTime - startTime);
 }
 
-const artistEl  = document.getElementById('trackArtists');
+const artistEl = document.getElementById('trackArtists');
 
 function loadTrack(index, autoplay = false) {
     stopCurrent();
@@ -159,6 +189,7 @@ function loadTrack(index, autoplay = false) {
             : link;
     }).join('');
 
+
     // release link — append to artists if present
     if (t.releaseUrl) {
         titleEl.innerHTML = `<a href="${t.releaseUrl}" target="_blank" rel="noopener">${t.title}</a>`;
@@ -174,12 +205,36 @@ function loadTrack(index, autoplay = false) {
 
     if (autoplay) startPlayback(0);
     else setPlaying(false);
+
+    const albumEl = document.getElementById('trackAlbum');
+
+    if (t.album) {
+        albumEl.innerHTML = t.releaseUrl
+            ? `<a href="${t.releaseUrl}" target="_blank" rel="noopener">${t.album}</a>`
+            : t.album;
+    } else {
+        albumEl.textContent = '';
+    }
+
+    const coverEl = document.getElementById('coverArt');
+
+// inside loadTrack:
+    if (t.cover) {
+        coverEl.src = t.cover;
+        coverEl.classList.add('visible');
+    } else {
+        coverEl.src = '';
+        coverEl.classList.remove('visible');
+    }
 }
 
 function startPlayback(offset) {
     if (current === -1) return;
     const buf = buffers[current];
-    if (!buf) { indexEl.textContent = 'Still loading...'; return; }
+    if (!buf) {
+        indexEl.textContent = 'Still loading...';
+        return;
+    }
 
     if (ctx.state === 'suspended') ctx.resume();
 
@@ -230,7 +285,10 @@ setInterval(() => {
 // controls
 btnPlay.addEventListener('click', () => {
     if (ctx.state === 'suspended') ctx.resume();
-    if (current === -1) { loadTrack(0, true); return; }
+    if (current === -1) {
+        loadTrack(0, true);
+        return;
+    }
     if (playing) {
         stopCurrent();
     } else {
