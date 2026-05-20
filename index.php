@@ -24,7 +24,8 @@ Highscore: <span id="highscore"></span>
 
 <br>
 <br>
-<button id="mutesfx">Mute SFX</button>
+<button id="mutesfx">Mute All SFX</button>
+<button id="mutebuttonsfx">Mute Button SFX</button>
 <br>
 <br>
 

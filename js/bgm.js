@@ -1,11 +1,22 @@
+const bgm1 = new Audio('audio/bgm/41de54a90332c5e211350dfeae7c6de1');
+const bgm2 = new Audio('audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2');
+const bgm3 = new Audio('audio/bgm/c465432faff516c77e654ffbaa58f88a');
+const bgm4 = new Audio('audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429');
+
+bgm1.load();
+bgm2.load();
+bgm3.load();
+bgm4.load();
+
+
 const tracks = [
-    {file: 'audio/bgm/bgm1_russet_dreams_41de54a90332c5e211350dfeae7c6de1.mp3', title: 'iBug - Russet Dreams'},
+    {file: 'audio/bgm/41de54a90332c5e211350dfeae7c6de1', title: 'iBug - Russet Dreams'},
     {
-        file: 'audio/bgm/bgm2_the_kings_crumpets_ba18dc4d2e014a922e9b65fdcabc7dc2.mp3',
+        file: 'audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2',
         title: "iBug - The King's Crumpets"
     },
-    {file: 'audio/bgm/bgm3_poached_c465432faff516c77e654ffbaa58f88a.mp3', title: 'iBug - Poached'},
-    {file: 'audio/bgm/bgm4_scorched_sand_b2b6dace67b56ffdea5ff04fd7e6f429.mp3', title: 'iBug - Scorched Sand'},
+    {file: 'audio/bgm/c465432faff516c77e654ffbaa58f88a', title: 'iBug - Poached'},
+    {file: 'audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429', title: 'iBug - Scorched Sand'},
 ];
 
 const audio = document.getElementById('audio');
