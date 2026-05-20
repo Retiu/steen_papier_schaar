@@ -319,3 +319,71 @@ input[type=range]::-webkit-slider-thumb:hover {
     letter-spacing: .12em;
     text-transform: uppercase;
 }
+.track-title {
+    font-family: 'Syne Mono', monospace;
+    font-style: normal;
+    font-size: 1rem;
+    color: var(--active);
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    /* scrolling marquee */
+    display: inline-block;
+    max-width: 100%;
+}
+
+.track-title.scrolling {
+    animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.track-artists {
+    font-size: .7rem;
+    color: var(--muted);
+    margin-top: .2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.track-artists a {
+    color: var(--amber-dim);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.track-artists a:hover {
+    color: var(--amber);
+}
+
+.track-artists .separator {
+    margin: 0 .25em;
+    color: var(--groove);
+}
+
+.release-link {
+    color: var(--groove);
+    text-decoration: none;
+    margin-left: .25em;
+    font-size: .65rem;
+    transition: color .15s;
+}
+
+.release-link:hover {
+    color: var(--amber);
+}
+
+.track-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-dim);
+}
+
+.track-title a:hover {
+    color: var(--amber);
+    border-bottom-color: var(--amber);
+}

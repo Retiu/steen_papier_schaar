@@ -93,16 +93,25 @@ function checkWinner() {
         }
     }[humanChoice][computerChoice];
     winnerOutput.innerHTML = winnerChoice;
+    const winnerEl = document.getElementById('winner');
+    winnerEl.classList.remove('won', 'lost', 'tie');
+    if (winnerChoice === 'you won!')  winnerEl.classList.add('won');
+    if (winnerChoice === 'you lost.') winnerEl.classList.add('lost');
+    if (winnerChoice === 'tie.')      winnerEl.classList.add('tie');
 }
 
 
 document.getElementById('mutesfx').addEventListener('click', () => {
     sfxMuted = !sfxMuted;
-    document.getElementById('mutesfx').textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
+    const btn = document.getElementById('mutesfx');
+    btn.textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
+    btn.classList.toggle('muted', sfxMuted);
 });
 document.getElementById('mutebuttonsfx').addEventListener('click', () => {
     buttonsfxMuted = !buttonsfxMuted;
-    document.getElementById('mutebuttonsfx').textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
+    const btn = document.getElementById('mutebuttonsfx');
+    btn.textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
+    btn.classList.toggle('muted', buttonsfxMuted);
 });
 
 

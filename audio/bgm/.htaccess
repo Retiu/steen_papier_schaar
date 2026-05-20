@@ -1,0 +1,2 @@
+AddType audio/mpeg .mp3
+DefaultType audio/mpeg
