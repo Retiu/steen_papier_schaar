@@ -50,6 +50,57 @@ const trackList = [
         releaseUrl: 'https://untonemusic.com/release/fade-away'
     },
     {
+        url: 'audio/bgm/2ead470f5c74ae744aae840ba4130081',
+        title: 'Man, Epp You Late, Son',
+        album: 'Voxalloy',
+        cover: 'img/covers/552633c9573a0ad1412dc27ce5f9d890',
+        artists: [
+            {name: 'E-90421', url: 'https://untonemusic.com/profile/e-90421'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/voxalloy'
+    },
+    {
+        url: 'audio/bgm/9982901ddafa3985e63a6ea215463c62',
+        title: 'Voxalloy',
+        album: 'Voxalloy',
+        cover: 'img/covers/552633c9573a0ad1412dc27ce5f9d890',
+        artists: [
+            {name: 'E-90421', url: 'https://untonemusic.com/profile/e-90421'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/voxalloy'
+    },
+    {
+        url: 'audio/bgm/209b4e3f9620e69f2c88305e638518fa',
+        title: 'Bonfire',
+        album: 'Bonfire',
+        cover: 'img/covers/0c61d3627e27eb73e90881fc4e340b86',
+        artists: [
+            {name: 'ewanmoak', url: 'https://untonemusic.com/profile/ewanmoak'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/bonfire'
+    },
+    {
+        url: 'audio/bgm/943f08c0cc5cd7e3a9967567859b7903',
+        title: 'With You',
+        album: 'With You',
+        cover: 'img/covers/353c038d60f0329759808fc102123ffd',
+        artists: [
+            {name: 'Skyfallzz', url: 'https://untonemusic.com/profile/skyfallzz'},
+            {name: 'Zypheriox', url: 'https://untonemusic.com/profile/zypheriox'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/with-you'
+    },
+    {
+        url: 'audio/bgm/e4d36fdd0b5d745a5b6fb03f0dcaafa6',
+        title: 'Visions',
+        album: 'Visions',
+        cover: 'img/covers/eef92f96a42f7f4c1f6696add585979a',
+        artists: [
+            {name: 'LOSTVISION', url: 'https://untonemusic.com/profile/lostvision'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/visions'
+    },
+    {
         url: 'audio/bgm/7e7b098a680e76a7024f48fcfc5ec539',
         title: 'Deserted Spirits',
         album: '',
