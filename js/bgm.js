@@ -118,6 +118,7 @@ let playing = false;
 let sourceNode = null;
 let startTime = 0;   // ctx.currentTime when playback started
 let startOffset = 0;  // how far into the track we started from
+let shuffle = false;
 
 // decode all tracks upfront
 trackList.forEach((t, i) => {
@@ -243,9 +244,14 @@ function startPlayback(offset) {
     sourceNode.connect(gainNode);
     sourceNode.start(0, offset);
     sourceNode.onended = () => {
-        // only auto-advance if we didn't manually stop
         if (playing) {
-            const next = (current + 1) % trackList.length;
+            let next;
+            if (shuffle) {
+                do { next = Math.floor(Math.random() * trackList.length); }
+                while (next === current && trackList.length > 1);
+            } else {
+                next = (current + 1) % trackList.length;
+            }
             loadTrack(next, true);
         }
     };
@@ -302,8 +308,20 @@ btnPrev.addEventListener('click', () => {
 });
 
 btnNext.addEventListener('click', () => {
-    const next = current >= trackList.length - 1 ? 0 : current + 1;
+    let next;
+    if (shuffle) {
+        do { next = Math.floor(Math.random() * trackList.length); }
+        while (next === current && trackList.length > 1);
+    } else {
+        next = current >= trackList.length - 1 ? 0 : current + 1;
+    }
     loadTrack(next, playing);
+});
+
+const btnShuffle = document.getElementById('btnShuffle');
+btnShuffle.addEventListener('click', () => {
+    shuffle = !shuffle;
+    btnShuffle.classList.toggle('active', shuffle);
 });
 
 seekSlider.addEventListener('input', () => {

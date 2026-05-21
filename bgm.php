@@ -71,6 +71,7 @@
         <button class="ctrl-btn" id="btnPrev" title="Previous">&#9664;&#9664;</button>
         <button class="ctrl-btn play-pause" id="btnPlay" title="Play / Pause">&#9654;</button>
         <button class="ctrl-btn" id="btnNext" title="Next">&#9654;&#9654;</button>
+        <button class="ctrl-btn" id="btnShuffle" title="Shuffle">&#x2a60;</button>
     </div>
 
     <p class="label">Volume</p>

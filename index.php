@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<button class="reset-btn" id="resetStats">Reset Stats</button>
+
 <div class="game-col">
 
     <!-- result display -->

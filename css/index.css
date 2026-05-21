@@ -255,3 +255,25 @@ body::before {
     height: 725px;
     display: block;
 }
+
+.reset-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    background: none;
+    border: 1px solid var(--groove);
+    color: var(--muted);
+    font-family: 'Syne Mono', monospace;
+    font-size: .6rem;
+    letter-spacing: .1em;
+    padding: .35rem .6rem;
+    border-radius: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all .15s;
+}
+.reset-btn:hover {
+    border-color: var(--lost);
+    color: var(--lost);
+}

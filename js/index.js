@@ -2,21 +2,41 @@ const humanOutput = document.querySelector("#human");
 const computerOutput = document.querySelector("#CPU");
 const winnerOutput = document.querySelector("#winner");
 const btns = document.querySelectorAll("#rock, #paper, #scissors");
-const highscoresOutput = document.querySelector("#highscore");
 
 let humanChoice = "";
 let computerChoice = "";
 let winnerChoice = "";
 let score = 0;
-let highscore = 0;
-let winsScore = 0;
-let lossesScore = 0;
-let tiesScore = 0;
 let sfxMuted = false;
 let buttonsfxMuted = false;
 let newHighscoreReached = false;
 let highscoreTimeout = false;
 
+
+// cookie helpers
+function setCookie(name, value) {
+    document.cookie = `${name}=${value};path=/;max-age=31536000`;
+}
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
+// load stats from cookies
+let highscore = parseInt(getCookie('highscore')) || 0;
+let winsScore = parseInt(getCookie('winsScore')) || 0;
+let lossesScore = parseInt(getCookie('lossesScore')) || 0;
+let tiesScore = parseInt(getCookie('tiesScore')) || 0;
+
+// apply on load
+document.querySelector("#highscore").innerHTML = highscore;
+document.querySelector("#winscore").innerHTML = winsScore;
+document.querySelector("#losescore").innerHTML = lossesScore;
+document.querySelector("#tiescore").innerHTML = tiesScore;
+
+// load mute state from cookies
+sfxMuted = getCookie('sfxMuted') === 'true';
+buttonsfxMuted = getCookie('buttonsfxMuted') === 'true';
 
 const sfxScissorCutPaper = new Audio('audio/sfx/sfx_scissorcutpaper.ogg');
 sfxScissorCutPaper.volume = 0.55;
@@ -105,17 +125,26 @@ function checkWinner() {
 }
 
 
-document.getElementById('mutesfx').addEventListener('click', () => {
+// mute buttons
+const mutesfxBtn = document.getElementById('mutesfx');
+const mutebuttonsfxBtn = document.getElementById('mutebuttonsfx');
+
+mutesfxBtn.textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
+mutesfxBtn.classList.toggle('muted', sfxMuted);
+mutebuttonsfxBtn.textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
+mutebuttonsfxBtn.classList.toggle('muted', buttonsfxMuted);
+
+mutesfxBtn.addEventListener('click', () => {
     sfxMuted = !sfxMuted;
-    const btn = document.getElementById('mutesfx');
-    btn.textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
-    btn.classList.toggle('muted', sfxMuted);
+    setCookie('sfxMuted', sfxMuted);
+    mutesfxBtn.textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
+    mutesfxBtn.classList.toggle('muted', sfxMuted);
 });
-document.getElementById('mutebuttonsfx').addEventListener('click', () => {
+mutebuttonsfxBtn.addEventListener('click', () => {
     buttonsfxMuted = !buttonsfxMuted;
-    const btn = document.getElementById('mutebuttonsfx');
-    btn.textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
-    btn.classList.toggle('muted', buttonsfxMuted);
+    setCookie('buttonsfxMuted', buttonsfxMuted);
+    mutebuttonsfxBtn.textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
+    mutebuttonsfxBtn.classList.toggle('muted', buttonsfxMuted);
 });
 
 
@@ -125,6 +154,7 @@ function updateScore() {
         if (score > highscore) {
             highscore = score;
             document.querySelector("#highscore").innerHTML = "" + highscore;
+            setCookie('highscore', highscore);
             newHighscoreReached = true;
         }
     } else if (winnerChoice === "you lost." || winnerChoice === "tie.") {
@@ -142,14 +172,17 @@ function WinsLosses() {
     if (winnerChoice === "you won!") {
         winsScore++
         document.querySelector("#winscore").innerHTML = "" + winsScore;
+        setCookie('winsScore', winsScore);
     }
     if (winnerChoice === "tie.") {
         tiesScore++
         document.querySelector("#tiescore").innerHTML = "" + tiesScore;
+        setCookie('tiesScore', tiesScore);
     }
     if (winnerChoice === "you lost.") {
         lossesScore++
         document.querySelector("#losescore").innerHTML = "" + lossesScore;
+        setCookie('lossesScore', lossesScore);
     }
 }
 
@@ -180,6 +213,18 @@ function playSound() {
     }
 }
 
+// reset stats
+document.getElementById('resetStats').addEventListener('click', () => {
+    if (!confirm('Reset all stats?')) return;
+    highscore = 0; winsScore = 0; lossesScore = 0; tiesScore = 0; score = 0;
+    ['highscore', 'winsScore', 'lossesScore', 'tiesScore'].forEach(k => setCookie(k, 0));
+    document.querySelector("#highscore").innerHTML    = 0;
+    document.querySelector("#winscore").innerHTML     = 0;
+    document.querySelector("#losescore").innerHTML    = 0;
+    document.querySelector("#tiescore").innerHTML     = 0;
+    document.querySelector("#currentscore").innerHTML = 0;
+});
+
 btns.forEach(function (btn) {
     btn.addEventListener("click", function (event) {
         // kijtk naar wat is gekozne doro de speler
@@ -191,3 +236,4 @@ btns.forEach(function (btn) {
         playSound();
     });
 });
+
