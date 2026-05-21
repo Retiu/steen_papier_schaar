@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d97ee6-e1bb-4a4e-852d-414951097b46" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/audio/bgm-src/Stedcoat - Fade Away.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/2946b2329d6dab1a9758ad80b32825d0" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/2946b2329d6dab1a9758ad80b32825d0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/41de54a90332c5e211350dfeae7c6de1" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/41de54a90332c5e211350dfeae7c6de1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/7e7b098a680e76a7024f48fcfc5ec539" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/7e7b098a680e76a7024f48fcfc5ec539" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/befa2c5a5a8ed06c6b6f1984ec7cadd3" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/befa2c5a5a8ed06c6b6f1984ec7cadd3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/c465432faff516c77e654ffbaa58f88a" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/c465432faff516c77e654ffbaa58f88a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/d1bfcc8ddb43f9f1d667d04031aa3584" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/d1bfcc8ddb43f9f1d667d04031aa3584" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/audio/bgm/f2bf89c471ee351cd0913fb387e41aca" beforeDir="false" afterPath="$PROJECT_DIR$/audio/bgm/f2bf89c471ee351cd0913fb387e41aca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/bgm.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/bgm.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +116,7 @@
       <workItem from="1779176740972" duration="752000" />
       <workItem from="1779261900494" duration="10571000" />
       <workItem from="1779273945454" duration="4763000" />
-      <workItem from="1779362684726" duration="273000" />
+      <workItem from="1779362684726" duration="436000" />
     </task>
     <servers />
   </component>

@@ -436,6 +436,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     flex: 1;
     min-width: 0;
 }
+
 .track-cover {
     width: 24px;
     height: 24px;
