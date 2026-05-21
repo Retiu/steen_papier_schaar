@@ -314,11 +314,22 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 .footer-text {
     font-size: .58rem;
-    color: var(--groove);
+    color: var(--amber-dim);
     text-align: center;
     letter-spacing: .12em;
     text-transform: uppercase;
 }
+
+.footer-text a {
+    color: var(--amber);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.footer-text a:hover {
+    color: var(--active);
+}
+
 
 .track-title {
     font-family: 'Syne Mono', monospace;

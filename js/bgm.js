@@ -156,6 +156,20 @@ const trackList = [
     },
 ];
 
+function setCookie(name, value) {
+    document.cookie = `${name}=${value};path=/;max-age=31536000`;
+}
+function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+}
+
+let shuffle = getCookie('shuffle') === 'true';
+const lastTrack = parseInt(getCookie('lastTrack')) || 0;
+const lastPosition = parseFloat(getCookie('lastPosition')) || 0;
+let autoplay = getCookie('autoplay') === 'true';
+const savedVolume = parseInt(getCookie('bgmVolume')) || 70;
+
 const titleEl = document.getElementById('trackTitle');
 const indexEl = document.getElementById('trackIndex');
 const barsEl = document.getElementById('bars');
@@ -168,9 +182,14 @@ const volVal = document.getElementById('volVal');
 const seekSlider = document.getElementById('seekSlider');
 const seekVal = document.getElementById('seekVal');
 
+const btnShuffle = document.getElementById('btnShuffle');
+btnShuffle.classList.toggle('active', shuffle);
+
 const ctx = new AudioContext();
 const gainNode = ctx.createGain();
-gainNode.gain.value = volSlider.value / 100;
+volSlider.value = savedVolume;
+volVal.textContent = savedVolume + '%';
+gainNode.gain.value = savedVolume / 100;
 gainNode.connect(ctx.destination);
 
 const buffers = new Array(trackList.length).fill(null);
@@ -179,7 +198,6 @@ let playing = false;
 let sourceNode = null;
 let startTime = 0;   // ctx.currentTime when playback started
 let startOffset = 0;  // how far into the track we started from
-let shuffle = false;
 
 // decode all tracks upfront
 trackList.forEach((t, i) => {
@@ -188,7 +206,13 @@ trackList.forEach((t, i) => {
         .then(ab => ctx.decodeAudioData(ab))
         .then(buf => {
             buffers[i] = buf;
-            if (i === 0) indexEl.textContent = 'Ready';
+            if (i === 0) {
+                indexEl.textContent = 'Ready';
+                // attempt autoplay once first track is decoded
+                if (autoplay && current === lastTrack && !playing) {
+                    ctx.resume().then(() => startPlayback(lastPosition));
+                }
+            }
         })
         .catch(e => console.error('Failed to load track', i, e));
 });
@@ -223,10 +247,11 @@ function getCurrentTime() {
 
 const artistEl = document.getElementById('trackArtists');
 
-function loadTrack(index, autoplay = false) {
+function loadTrack(index, shouldPlay = false) {
     stopCurrent();
 
     current = index;
+    setCookie('lastTrack', index);
     startOffset = 0;
 
     const t = trackList[index];
@@ -265,7 +290,7 @@ function loadTrack(index, autoplay = false) {
     seekSlider.value = 0;
     seekVal.textContent = '0:00';
 
-    if (autoplay) startPlayback(0);
+    if (shouldPlay) startPlayback(0);
     else setPlaying(false);
 
     const albumEl = document.getElementById('trackAlbum');
@@ -347,6 +372,7 @@ setInterval(() => {
     const ct = getCurrentTime();
     seekSlider.value = (ct / buf.duration) * 100;
     seekVal.textContent = formatTime(ct);
+    setCookie('lastPosition', ct);   // add this line
 }, 200);
 
 // controls
@@ -379,10 +405,17 @@ btnNext.addEventListener('click', () => {
     loadTrack(next, playing);
 });
 
-const btnShuffle = document.getElementById('btnShuffle');
 btnShuffle.addEventListener('click', () => {
     shuffle = !shuffle;
+    setCookie('shuffle', shuffle);
     btnShuffle.classList.toggle('active', shuffle);
+});
+
+const chkAutoplay = document.getElementById('chkAutoplay');
+chkAutoplay.checked = autoplay;
+chkAutoplay.addEventListener('change', () => {
+    autoplay = chkAutoplay.checked;
+    setCookie('autoplay', autoplay);
 });
 
 seekSlider.addEventListener('input', () => {
@@ -402,4 +435,12 @@ volSlider.addEventListener('input', () => {
     const v = volSlider.value / 100;
     gainNode.gain.value = v;
     volVal.textContent = volSlider.value + '%';
+    setCookie('bgmVolume', volSlider.value); // add this
 });
+
+// restore last track and position
+loadTrack(lastTrack, false);
+if (lastPosition > 0) {
+    startOffset = lastPosition;
+    seekVal.textContent = formatTime(lastPosition);
+}

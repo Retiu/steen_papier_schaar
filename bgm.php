@@ -86,9 +86,16 @@
         <input type="range" id="seekSlider" min="0" max="100" value="0" step="0.1">
         <span class="vol-val" id="seekVal">0:00</span>
     </div>
+    <div class="volume-row" style="margin-bottom:.5rem">
+        <label style="font-size:.65rem; color:var(--muted); display:flex; align-items:center; gap:.5rem; cursor:pointer;">
+            <input type="checkbox" id="chkAutoplay">
+            Autoplay on open
+        </label>
+    </div>
 
     <div class="footer-line"></div>
-    <p class="footer-text">BGM &mdash; Steen Papier Schaar</p>
+    <p class="footer-text">MUSIC PLAYER</p>
+    <p class="footer-text">Music mostly from <a href="https://untonemusic.com">UNTONE Music</a></p>
 </div>
 
 <script src="js/bgm.js"></script>
