@@ -101,6 +101,16 @@ const trackList = [
         releaseUrl: 'https://untonemusic.com/release/visions'
     },
     {
+        url: 'audio/bgm/8dc7e74c61f6726a7a6717a5aea7a24f',
+        title: 'Lost',
+        album: 'Lost',
+        cover: 'img/covers/2e4c02cbe5ba2d0ca0d555b22c262da4',
+        artists: [
+            {name: 'Tanza3D', url: 'https://untonemusic.com/profile/tanza'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/lost'
+    },
+    {
         url: 'audio/bgm/7e7b098a680e76a7024f48fcfc5ec539',
         title: 'Deserted Spirits',
         album: '',
