@@ -18,13 +18,13 @@ let newHighscoreReached = false;
 let highscoreTimeout = false;
 
 
-const sfxScissorCutPaper = new Audio('audio/sfx/sfx_scissorcutpaper.mp3');
+const sfxScissorCutPaper = new Audio('audio/sfx/sfx_scissorcutpaper.ogg');
 sfxScissorCutPaper.volume = 0.55;
 
-const sfxRockBeatScissor = new Audio('audio/sfx/sfx_rockbeatscissor-v3.mp3');
+const sfxRockBeatScissor = new Audio('audio/sfx/sfx_rockbeatscissor-v3.ogg');
 sfxRockBeatScissor.volume = 0.3;
 
-const sfxNewHighscore = new Audio('audio/sfx/sfx_newhighscore-v4.mp3');
+const sfxNewHighscore = new Audio('audio/sfx/sfx_newhighscore-v4.ogg');
 sfxNewHighscore.volume = 0.65;
 
 function playSfx(audio) {
