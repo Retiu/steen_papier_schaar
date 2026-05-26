@@ -1,4 +1,5 @@
 const trackList = [
+    // Songs released on the "UNTONE Music" label
     {
         url: 'audio/bgm/41de54a90332c5e211350dfeae7c6de1',
         title: 'Russet Dreams',
@@ -7,7 +8,18 @@ const trackList = [
         artists: [
             {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
-        releaseUrl: 'https://untonemusic.com/release/russet-dreams'
+        releaseUrl: 'https://untonemusic.com/release/russet-dreams',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Hip-Hop'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/ba18dc4d2e014a922e9b65fdcabc7dc2',
@@ -17,7 +29,18 @@ const trackList = [
         artists: [
             {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
-        releaseUrl: 'https://untonemusic.com/release/russet-dreams'
+        releaseUrl: 'https://untonemusic.com/release/russet-dreams',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Hip-Hop'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/c465432faff516c77e654ffbaa58f88a',
@@ -27,7 +50,18 @@ const trackList = [
         artists: [
             {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
-        releaseUrl: 'https://untonemusic.com/release/russet-dreams'
+        releaseUrl: 'https://untonemusic.com/release/russet-dreams',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Hip-Hop'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/b2b6dace67b56ffdea5ff04fd7e6f429',
@@ -37,7 +71,18 @@ const trackList = [
         artists: [
             {name: 'iBug', url: 'https://untonemusic.com/profile/ibug'}
         ],
-        releaseUrl: 'https://untonemusic.com/release/russet-dreams'
+        releaseUrl: 'https://untonemusic.com/release/russet-dreams',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Hip-Hop'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/d1bfcc8ddb43f9f1d667d04031aa3584',
@@ -47,7 +92,19 @@ const trackList = [
         artists: [
             {name: 'Stedcoat', url: 'https://untonemusic.com/profile/stedcoat'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/fade-away'
+        releaseUrl: 'https://untonemusic.com/release/fade-away',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Chill House'},
+            {genrename: 'Chill'},
+            {genrename: 'House'},
+            {genrename: 'Deep House'},
+            {genrename: 'Future House'},
+            {genrename: 'Dance'},
+            {genrename: 'Electronic'},
+        ],
     },
     {
         url: 'audio/bgm/2ead470f5c74ae744aae840ba4130081',
@@ -57,7 +114,15 @@ const trackList = [
         artists: [
             {name: 'E-90421', url: 'https://untonemusic.com/profile/e-90421'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/voxalloy'
+        releaseUrl: 'https://untonemusic.com/release/voxalloy',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'House'},
+            {genrename: 'Dance'},
+            {genrename: 'Electronic'},
+        ],
     },
     {
         url: 'audio/bgm/9982901ddafa3985e63a6ea215463c62',
@@ -67,7 +132,18 @@ const trackList = [
         artists: [
             {name: 'E-90421', url: 'https://untonemusic.com/profile/e-90421'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/voxalloy'
+        releaseUrl: 'https://untonemusic.com/release/voxalloy',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Vaporwave'},
+            {genrename: 'Synthwave'},
+            {genrename: 'Chillout'},
+            {genrename: '3/4 Time Signature'},
+            {genrename: 'Electronic'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/209b4e3f9620e69f2c88305e638518fa',
@@ -77,7 +153,17 @@ const trackList = [
         artists: [
             {name: 'ewanmoak', url: 'https://untonemusic.com/profile/ewanmoak'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/bonfire'
+        releaseUrl: 'https://untonemusic.com/release/bonfire',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/943f08c0cc5cd7e3a9967567859b7903',
@@ -88,7 +174,22 @@ const trackList = [
             {name: 'Skyfallzz', url: 'https://untonemusic.com/profile/skyfallzz'},
             {name: 'Zypheriox', url: 'https://untonemusic.com/profile/zypheriox'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/with-you'
+        releaseUrl: 'https://untonemusic.com/release/with-you',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Chill House'},
+            {genrename: 'Chill'},
+            {genrename: 'House'},
+            {genrename: 'Deep House'},
+            {genrename: 'Future House'},
+            {genrename: 'Colour House'},
+            {genrename: 'Colour'},
+            {genrename: 'Colour Deep House'},
+            {genrename: 'Dance'},
+            {genrename: 'Electronic'},
+        ],
     },
     {
         url: 'audio/bgm/e4d36fdd0b5d745a5b6fb03f0dcaafa6',
@@ -98,7 +199,17 @@ const trackList = [
         artists: [
             {name: 'LOSTVISION', url: 'https://untonemusic.com/profile/lostvision'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/visions'
+        releaseUrl: 'https://untonemusic.com/release/visions',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Instrumental'},
+        ],
     },
     {
         url: 'audio/bgm/8dc7e74c61f6726a7a6717a5aea7a24f',
@@ -108,8 +219,46 @@ const trackList = [
         artists: [
             {name: 'Tanza3D', url: 'https://untonemusic.com/profile/tanza'},
         ],
-        releaseUrl: 'https://untonemusic.com/release/lost'
+        releaseUrl: 'https://untonemusic.com/release/lost',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Piano'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Instrumental'},
+        ],
     },
+
+    // Songs self-released by the artist
+    {
+        url: 'audio/bgm/5e951964784058c9880a89443262e20a',
+        title: 'sometimes i look at nature and envy it\'s tranquilityytrhfdbghyjhgrsiofdjetihjagrtsiohjoifjgtfsjothgrjfsgiogrjafsdiogs',
+        album: 'sometimes i look at nature and envy it\'s tranquility',
+        cover: 'img/covers/cc530ba323945df1cd598ddd9fd57e3d',
+        artists: [
+            {name: 'Morar', url: 'https://open.spotify.com/artist/0D0kq0SvZMYLOYgEGfQZLp'},
+        ],
+        releaseUrl: 'https://push.fm/fl/morarsilanaeit',
+        label: [
+            {labelname: 'No label/Self-released', labelurl: 'https://www.discogs.com/label/1818-Not-On-Label'},
+        ],
+        genres: [
+            {genrename: 'Emotional'},
+            {genrename: 'Chill'},
+            {genrename: 'Electronic'},
+            {genrename: 'Ambient'},
+            {genrename: 'Dubstep'},
+            {genrename: 'Colour Bass'},
+            {genrename: 'Dariacore'},
+            {genrename: 'Instrumental'},
+            {genrename: 'Experimental'},
+            {genrename: 'Modern Classical'},
+        ],
+    },
+
+    // Unreleased music
     {
         url: 'audio/bgm/7e7b098a680e76a7024f48fcfc5ec539',
         title: 'Deserted Spirits',
@@ -119,7 +268,28 @@ const trackList = [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
-        releaseUrl: ''
+        releaseUrl: '',
+        label: [
+            {labelname: 'Unreleased', labelurl: 'https://www.example.com'},
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+            {labelname: 'TONE::FURY', labelurl: 'https://tonefury.com'},
+        ],
+        genres: [
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Cinematic'},
+            {genrename: 'Orchestral'},
+            {genrename: 'Emotional'},
+            {genrename: 'Intro'},
+            {genrename: 'Electronic'},
+            {genrename: 'Classical'},
+            {genrename: 'Epic'},
+            {genrename: 'Dubstep'},
+            {genrename: 'Modern Classical'},
+            {genrename: 'Abstract'},
+            {genrename: 'Soundtrack'},
+            {genrename: 'Experimental'},
+        ],
     },
     {
         url: 'audio/bgm/befa2c5a5a8ed06c6b6f1984ec7cadd3',
@@ -130,7 +300,17 @@ const trackList = [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
-        releaseUrl: ''
+        releaseUrl: '',
+        label: [
+            {labelname: 'Unreleased', labelurl: 'https://www.example.com'},
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Lo-Fi'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+        ],
     },
     {
         url: 'audio/bgm/2946b2329d6dab1a9758ad80b32825d0',
@@ -141,7 +321,23 @@ const trackList = [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
-        releaseUrl: ''
+        releaseUrl: '',
+        label: [
+            {labelname: 'Unreleased', labelurl: 'https://www.example.com'},
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Breakbeat'},
+            {genrename: 'Jungle'},
+            {genrename: 'Breakcore'},
+            {genrename: 'Drum and Bass'},
+            {genrename: 'Breakbeat'},
+            {genrename: 'Synthwave'},
+            {genrename: 'Vaporwave'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+        ],
     },
     {
         url: 'audio/bgm/f2bf89c471ee351cd0913fb387e41aca',
@@ -152,13 +348,31 @@ const trackList = [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
         ],
-        releaseUrl: ''
+        releaseUrl: '',
+        label: [
+            {labelname: 'Unreleased', labelurl: 'https://www.example.com'},
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Breakbeat'},
+            {genrename: 'Jungle'},
+            {genrename: 'Breakcore'},
+            {genrename: 'Drum and Bass'},
+            {genrename: 'Breakbeat'},
+            {genrename: 'Synthwave'},
+            {genrename: 'Vaporwave'},
+            {genrename: 'Chill'},
+            {genrename: 'Ambient'},
+            {genrename: 'Electronic'},
+            {genrename: 'Instrumental'},
+        ],
     },
 ];
 
 function setCookie(name, value) {
     document.cookie = `${name}=${value};path=/;max-age=31536000`;
 }
+
 function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
@@ -261,8 +475,35 @@ function loadTrack(index, shouldPlay = false) {
     titleEl.classList.remove('scrolling');
     // check after render if it overflows
     requestAnimationFrame(() => {
-        if (titleEl.scrollWidth > titleEl.parentElement.clientWidth) {
-            titleEl.classList.add('scrolling');
+        if (titleEl.scrollWidth > titleEl.clientWidth) {
+            const text = titleEl.innerHTML;
+            titleEl.innerHTML = `<span class="marquee-inner">${text}&nbsp;&nbsp;&nbsp;&nbsp;${text}</span>`;
+            const span = titleEl.querySelector('.marquee-inner');
+            const scrollWidth = span.scrollWidth / 2;
+            const pauseSeconds = 2;
+            const pixelsPerSecond = 60;
+            const scrollDuration = scrollWidth / pixelsPerSecond;
+            const totalDuration = scrollDuration + pauseSeconds;
+            const pausePercent = (pauseSeconds / totalDuration * 100).toFixed(2);
+            const scrollEndPercent = (100 - pausePercent).toFixed(2);
+
+            span.style.animationDuration = totalDuration + 's';
+            span.style.animationTimingFunction = 'linear';
+
+            const styleId = 'marquee-keyframe';
+            let styleEl = document.getElementById(styleId);
+            if (!styleEl) {
+                styleEl = document.createElement('style');
+                styleEl.id = styleId;
+                document.head.appendChild(styleEl);
+            }
+            styleEl.textContent = `
+    @keyframes marquee {
+        0%                   { transform: translateX(0); }
+        ${pausePercent}%     { transform: translateX(0); }
+        100%                 { transform: translateX(-50%); }
+    }
+`;
         }
     });
 
@@ -333,7 +574,9 @@ function startPlayback(offset) {
         if (playing) {
             let next;
             if (shuffle) {
-                do { next = Math.floor(Math.random() * trackList.length); }
+                do {
+                    next = Math.floor(Math.random() * trackList.length);
+                }
                 while (next === current && trackList.length > 1);
             } else {
                 next = (current + 1) % trackList.length;
@@ -397,7 +640,9 @@ btnPrev.addEventListener('click', () => {
 btnNext.addEventListener('click', () => {
     let next;
     if (shuffle) {
-        do { next = Math.floor(Math.random() * trackList.length); }
+        do {
+            next = Math.floor(Math.random() * trackList.length);
+        }
         while (next === current && trackList.length > 1);
     } else {
         next = current >= trackList.length - 1 ? 0 : current + 1;
