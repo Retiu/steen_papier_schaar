@@ -8,3 +8,14 @@
 # Datasource local storage ignored files
 /.idea/dataSources/
 /.idea/dataSources.local.xml
+/audio/sfx/sfx_newhighscore.ogg
+/audio/sfx/sfx_newhighscore-96khz.ogg
+/audio/sfx/sfx_newhighscore-v2.ogg
+/audio/sfx/sfx_newhighscore-v2-96khz.ogg
+/audio/sfx/sfx_newhighscore-v3.ogg
+/audio/sfx/sfx_newhighscore-v3-96khz.ogg
+/audio/sfx/sfx_newhighscore-v4-96khz.ogg
+/audio/sfx/sfx_rockbeatscissor.ogg
+/audio/sfx/sfx_rockbeatscissor-v2.ogg
+/audio/sfx/sfx_rockbeatscissor-96khz.ogg
+/audio/sfx/sfx_rockbeatscissor-96khz-v2.ogg
