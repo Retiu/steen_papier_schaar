@@ -557,9 +557,9 @@ let current = -1;
 let playing = false;
 let sourceNode = null;
 let startTime = 0;   // ctx.currentTime when playback started
-let startOffset = 0;  // how far into the track we started from
+let startOffset = 0;
 
-// ── scrobble state ──────────────────────────────────────────────────────────
+//  last.fm scrobble state
 let scrobbleTimer = null;
 let trackStartedAt = null;
 let scrobbled = false;
@@ -599,7 +599,7 @@ function getButtons() {
     return tracklist.querySelectorAll('.track-btn');
 }
 
-// ── filtering ───────────────────────────────────────────────────────────────
+// filters
 const filterType = document.getElementById('filterType');
 const filterValue = document.getElementById('filterValue');
 const filterClear = document.getElementById('filterClear');
@@ -687,7 +687,7 @@ const lastfmAPIKey = document.getElementById('lastfmKeybox');
 if (cookiesAllowed()) setCookie('lastfmApiKey', lastfmAPIKey);
 
 
-// ── Last.fm ─────────────────────────────────────────────────────────────────
+// last.fm
 function lastfmSig(params) {
     const sorted = Object.keys(params).sort().map(k => k + params[k]).join('');
     return md5(sorted + lastfmSecret);
@@ -829,7 +829,6 @@ function loadTrack(index, shouldPlay = false) {
 
     const coverEl = document.getElementById('coverArt');
 
-// inside loadTrack:
     if (t.cover) {
         coverEl.src = t.cover;
         coverEl.classList.add('visible');
@@ -988,7 +987,7 @@ setInterval(() => {
     const ct = getCurrentTime();
     seekSlider.value = (ct / buf.duration) * 100;
     seekVal.textContent = formatTime(ct);
-    if (cookiesAllowed()) setCookie('lastPosition', ct);   // add this line
+    if (cookiesAllowed()) setCookie('lastPosition', ct);
 }, 200);
 
 // controls
@@ -1066,7 +1065,7 @@ seekSlider.addEventListener('input', () => {
 volSlider.addEventListener('input', () => {
     gainNode.gain.value = volSlider.value / 100;
     volVal.textContent = volSlider.value + '%';
-    if (cookiesAllowed()) setCookie('bgmVolume', volSlider.value); // add this
+    if (cookiesAllowed()) setCookie('bgmVolume', volSlider.value);
 });
 lastfmKeybox.addEventListener('input', () => {
     lastfmKey = lastfmKeybox.value;

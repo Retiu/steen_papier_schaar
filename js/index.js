@@ -260,7 +260,7 @@ btns.forEach(function (btn) {
         humanPick(event);
         // checken wie er geowneon heef
         checkWinner();
-        updateScore(); // add this
+        updateScore();
         WinsLosses()
         playSound();
     });
