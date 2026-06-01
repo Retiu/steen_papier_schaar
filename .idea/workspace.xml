@@ -5,18 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83d97ee6-e1bb-4a4e-852d-414951097b46" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/audio/bgm/19679c27d309a7932dc3b5af48091cf2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/bgm/34b3a41c41fa2543ff032a6a28bb3d26" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/bgm/897c670978ec9dd4d9ae41d3306e9e68" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/bgm/ad7ba8987810f1833be7295f25f37058" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/audio/bgm/b1d383ef3c32dd702753f0c6610e487b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/covers/2db9e6104a87e9d27a58be7b59119559" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/covers/ac6ee9d3b6476d86eee2783199dfa08a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/covers/e82d24f90537c01f8e084c59e7b5fa0c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/covers/ecb4da1cd38e5d0ef29f4ab216f96550" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/bgm.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bgm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/209b4e3f9620e69f2c88305e638518fa.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/2946b2329d6dab1a9758ad80b32825d0.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/2ead470f5c74ae744aae840ba4130081.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/41de54a90332c5e211350dfeae7c6de1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/5e951964784058c9880a89443262e20a.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/7e7b098a680e76a7024f48fcfc5ec539.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/8dc7e74c61f6726a7a6717a5aea7a24f.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/943f08c0cc5cd7e3a9967567859b7903.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/9982901ddafa3985e63a6ea215463c62.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/b2b6dace67b56ffdea5ff04fd7e6f429.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/ba18dc4d2e014a922e9b65fdcabc7dc2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/befa2c5a5a8ed06c6b6f1984ec7cadd3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/c465432faff516c77e654ffbaa58f88a.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/d1bfcc8ddb43f9f1d667d04031aa3584.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/e4d36fdd0b5d745a5b6fb03f0dcaafa6.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/audio/bgm - Copy/MP3/f2bf89c471ee351cd0913fb387e41aca.mp3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +139,7 @@
       <workItem from="1779882822501" duration="1807000" />
       <workItem from="1779952047521" duration="1746000" />
       <workItem from="1780297630601" duration="6199000" />
-      <workItem from="1780304347028" duration="3063000" />
+      <workItem from="1780304347028" duration="3680000" />
     </task>
     <servers />
   </component>
