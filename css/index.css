@@ -102,7 +102,7 @@ body::before {
     z-index: 0;
 }
 
-/* ── layout ── */
+/* layout */
 .game-col {
     position: relative;
     z-index: 1;
@@ -121,7 +121,7 @@ body::before {
     flex-shrink: 0;
 }
 
-/* ── card ── */
+/* card */
 .card {
     background: var(--surface);
     border: 1px solid var(--groove);
@@ -147,7 +147,7 @@ body::before {
     margin-bottom: .75rem;
 }
 
-/* ── result display ── */
+/* result display */
 .result-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -213,7 +213,7 @@ body::before {
     color: var(--tie);
 }
 
-/* ── score ── */
+/* score */
 .score-row {
     display: flex;
     gap: .5rem;
@@ -241,7 +241,7 @@ body::before {
     color: var(--active);
 }
 
-/* ── choice buttons ── */
+/* choice buttons */
 .choice-btns {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -279,7 +279,7 @@ body::before {
     transform: scale(.96);
 }
 
-/* ── mute buttons ── */
+/* mute buttons */
 .mute-row {
     display: flex;
     gap: .5rem;
@@ -310,7 +310,7 @@ body::before {
     color: var(--amber);
 }
 
-/* ── bgm iframe ── */
+/* bgm iframe */
 .bgm-col iframe {
     border: none;
     width: 440px;
