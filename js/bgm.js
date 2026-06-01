@@ -237,6 +237,113 @@ const trackList = [
             {genrename: 'Instrumental'},
         ],
     },
+    {
+        url: 'audio/bgm/34b3a41c41fa2543ff032a6a28bb3d26',
+        title: 'OBSESSED',
+        album: 'OBSESSED',
+        cover: 'img/covers/ac6ee9d3b6476d86eee2783199dfa08a',
+        artists: [
+            {name: 'Lexder', url: 'https://untonemusic.com/profile/lexder'},
+            {name: 'StellarHD', url: 'https://untonemusic.com/profile/stellarhd'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/obsessed',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Electronic'},
+            {genrename: 'Dance'},
+            {genrename: 'Drum and Bass'},
+            {genrename: 'Colour'},
+            {genrename: 'Colour Drum and Bass'},
+            {genrename: 'Experimental'},
+            {genrename: 'Dubstep'},
+        ],
+    },
+    {
+        url: 'audio/bgm/19679c27d309a7932dc3b5af48091cf2',
+        title: 'THIS WAY',
+        album: 'THIS WAY',
+        cover: 'img/covers/e82d24f90537c01f8e084c59e7b5fa0c',
+        artists: [
+            {name: 'Frosty', url: 'https://untonemusic.com/profile/frosty'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/this-way',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Electronic'},
+            {genrename: 'Dance'},
+            {genrename: 'House'},
+            {genrename: 'Rally House'},
+            {genrename: 'Tech House'},
+        ],
+    },
+    {
+        url: 'audio/bgm/ad7ba8987810f1833be7295f25f37058',
+        title: 'LISTEN',
+        album: 'LISTEN',
+        cover: 'img/covers/ecb4da1cd38e5d0ef29f4ab216f96550',
+        artists: [
+            {name: 'Condukt', url: 'https://untonemusic.com/profile/condukt'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/listen',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Electronic'},
+            {genrename: 'Drum and Bass'},
+            {genrename: 'Jungle'},
+            {genrename: 'Breakbeat'},
+            {genrename: 'Breakcore'},
+            {genrename: 'Experimental'},
+            {genrename: 'Juke'},
+            {genrename: 'Breaks'},
+        ],
+    },
+    {
+        url: 'audio/bgm/897c670978ec9dd4d9ae41d3306e9e68',
+        title: "Hero's March",
+        album: "Hero's March",
+        cover: 'img/covers/2db9e6104a87e9d27a58be7b59119559',
+        artists: [
+            {name: 'TFD500', url: 'https://untonemusic.com/profile/tfd500'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/heroes-march',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Electronic'},
+            {genrename: 'Ambient'},
+            {genrename: 'Orchestral'},
+            {genrename: 'Experimental'},
+            {genrename: 'Soundtrack'},
+        ],
+    },
+    {
+        url: 'audio/bgm/b1d383ef3c32dd702753f0c6610e487b',
+        title: "Hero's March (Chiptune Mix)",
+        album: "Hero's March",
+        cover: 'img/covers/2db9e6104a87e9d27a58be7b59119559',
+        artists: [
+            {name: 'TFD500', url: 'https://untonemusic.com/profile/tfd500'},
+        ],
+        releaseUrl: 'https://untonemusic.com/release/heroes-march',
+        label: [
+            {labelname: 'UNTONE Music', labelurl: 'https://untonemusic.com'},
+        ],
+        genres: [
+            {genrename: 'Electronic'},
+            {genrename: 'Ambient'},
+            {genrename: 'Experimental'},
+            {genrename: 'Chiptune'},
+            {genrename: '8-Bit'},
+            {genrename: 'Soundtrack'},
+        ],
+    },
 
     // Songs self-released by the artist
     {
