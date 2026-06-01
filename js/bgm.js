@@ -380,8 +380,8 @@ const trackList = [
     {
         url: 'audio/bgm/7e7b098a680e76a7024f48fcfc5ec539',
         title: 'Deserted Spirits',
-        album: '',
-        cover: '',
+        album: 'Untitled Album (DJ Stuiter & The_ongoing)',
+        cover: 'img/covers/97fa2780aad57ae30b35afe4244d0034',
         artists: [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
@@ -412,8 +412,8 @@ const trackList = [
     {
         url: 'audio/bgm/befa2c5a5a8ed06c6b6f1984ec7cadd3',
         title: 'Stars',
-        album: '',
-        cover: '',
+        album: 'Untitled Album (DJ Stuiter & The_ongoing)',
+        cover: 'img/covers/97fa2780aad57ae30b35afe4244d0034',
         artists: [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
@@ -433,8 +433,8 @@ const trackList = [
     {
         url: 'audio/bgm/2946b2329d6dab1a9758ad80b32825d0',
         title: 'Falling Time',
-        album: '',
-        cover: '',
+        album: 'Untitled Album (DJ Stuiter & The_ongoing)',
+        cover: 'img/covers/97fa2780aad57ae30b35afe4244d0034',
         artists: [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}
@@ -465,8 +465,8 @@ const trackList = [
     {
         url: 'audio/bgm/f2bf89c471ee351cd0913fb387e41aca',
         title: 'Falling Time (Instrumental)',
-        album: '',
-        cover: '',
+        album: 'Untitled Album (DJ Stuiter & The_ongoing)',
+        cover: 'img/covers/97fa2780aad57ae30b35afe4244d0034',
         artists: [
             {name: 'DJ Stuiter', url: 'https://untonemusic.com/profile/dj-stuiter'},
             {name: 'The_ongoing', url: 'https://www.youtube.com/@the_ongoing'}

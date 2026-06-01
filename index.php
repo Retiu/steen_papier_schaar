@@ -10,7 +10,8 @@
 
 <body>
 <div class="cookie-banner" id="cookieBanner">
-    <p>This page uses cookies to store your preferences and game statistics. No data is shared with third parties except Last.fm if you enter your credentials.</p>
+    <p>This page uses cookies to store your preferences and game statistics. No data is shared with third parties except
+        Last.fm if you enter your credentials.</p>
     <div class="cookie-banner-btns">
         <button class="cookie-decline" id="cookieDecline">Decline</button>
         <button class="cookie-accept" id="cookieAccept">Accept</button>
