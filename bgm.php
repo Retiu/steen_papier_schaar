@@ -65,8 +65,25 @@
     </div>
 
     <p class="label">Tracks</p>
+    <details class="filter-panel">
+        <summary>Filter</summary>
+        <div class="filter-fields">
+            <div class="filter-row">
+                <select id="filterType">
+                    <option value="">— type —</option>
+                    <option value="artist">Artist</option>
+                    <option value="album">Album</option>
+                    <option value="genre">Genre</option>
+                    <option value="label">Label</option>
+                </select>
+                <select id="filterValue" disabled>
+                    <option value="">— value —</option>
+                </select>
+            </div>
+            <button class="filter-clear" id="filterClear">Clear filter</button>
+        </div>
+    </details>
     <div class="tracklist" id="tracklist"></div>
-
     <div class="controls">
         <button class="ctrl-btn" id="btnPrev" title="Previous">&#9664;&#9664;</button>
         <button class="ctrl-btn play-pause" id="btnPlay" title="Play / Pause">&#9654;</button>
@@ -93,11 +110,25 @@
         </label>
     </div>
 
+    <details class="lastfm">
+        <summary>Last.fm Scrobbling</summary>
+        <div class="lastfm-fields">
+            <p><span>API Key</span> <input id="lastfmKeybox" type="password"></p>
+            <p><span>API Secret</span> <input id="lastfmSecretbox" type="password"></p>
+            <p><span>Username</span> <input id="lastfmUserbox"></p>
+            <p><span>Password</span> <input id="lastfmPassbox" type="password"></p>
+        </div>
+    </details>
     <div class="footer-line"></div>
+
     <p class="footer-text">MUSIC PLAYER</p>
     <p class="footer-text">Music mostly from <a href="https://untonemusic.com">UNTONE Music</a></p>
+    <audio id="mediaSessionAudio" loop>
+        <source src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" type="audio/wav">
+    </audio>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 <script src="js/bgm.js"></script>
 </body>
 </html>

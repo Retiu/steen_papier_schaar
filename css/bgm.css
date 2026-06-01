@@ -454,3 +454,176 @@ input[type=range]::-webkit-slider-thumb:hover {
     background: var(--amber-dim);
     border-color: var(--amber);
 }
+
+.lastfm {
+    margin-bottom: .75rem;
+}
+
+.lastfm summary {
+    font-size: .6rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    margin-bottom: .35rem;
+}
+
+.lastfm summary::-webkit-details-marker {
+    display: none;
+}
+
+.lastfm summary::before {
+    content: '▶';
+    font-size: .5rem;
+    transition: transform .15s;
+}
+
+.lastfm[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.lastfm summary:hover {
+    color: var(--cream);
+}
+
+.lastfm-fields {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding-top: .35rem;
+}
+
+.lastfm-fields p {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.lastfm-fields span {
+    font-size: .6rem;
+    color: var(--muted);
+    letter-spacing: .05em;
+    min-width: 5.5em;
+    flex-shrink: 0;
+}
+
+.lastfm-fields input {
+    background: var(--bg);
+    border: 1px solid var(--groove);
+    border-radius: 2px;
+    color: var(--cream);
+    font-family: 'Syne Mono', monospace;
+    font-size: .65rem;
+    padding: .3rem .5rem;
+    outline: none;
+    transition: border-color .15s;
+    width: 200px;
+    flex: none;
+    margin-left: auto;
+}
+
+.lastfm-fields input:focus {
+    border-color: var(--amber-dim);
+}
+
+.filter-panel {
+    margin-bottom: .5rem;
+}
+
+.filter-panel summary {
+    font-size: .6rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: .4em;
+    margin-bottom: .35rem;
+}
+
+.filter-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.filter-panel summary::before {
+    content: '▶';
+    font-size: .5rem;
+    transition: transform .15s;
+}
+
+.filter-panel[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.filter-panel summary:hover {
+    color: var(--cream);
+}
+
+.filter-fields {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+    padding-top: .35rem;
+    margin-bottom: .5rem;
+}
+
+.filter-row {
+    display: flex;
+    gap: .5rem;
+}
+
+.filter-row select {
+    background: var(--bg);
+    border: 1px solid var(--groove);
+    border-radius: 2px;
+    color: var(--cream);
+    font-family: 'Syne Mono', monospace;
+    font-size: .65rem;
+    padding: .3rem .5rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color .15s;
+    width: 120px;
+    flex: none;
+}
+.filter-row select#filterValue {
+    width: 200px;
+}
+
+.filter-row select:focus {
+    border-color: var(--amber-dim);
+}
+
+.filter-row select:disabled {
+    opacity: .4;
+    cursor: default;
+}
+
+.filter-clear {
+    background: none;
+    border: 1px solid var(--groove);
+    color: var(--muted);
+    font-family: 'Syne Mono', monospace;
+    font-size: .6rem;
+    padding: .3rem .6rem;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: .05em;
+    transition: all .15s;
+    align-self: flex-start;
+}
+
+.filter-clear:hover {
+    border-color: var(--amber-dim);
+    color: var(--cream);
+}
+
+.track-btn.hidden {
+    display: none !important;
+}

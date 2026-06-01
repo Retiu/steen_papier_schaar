@@ -61,6 +61,7 @@ const trackList = [
             {genrename: 'Electronic'},
             {genrename: 'Hip-Hop'},
             {genrename: 'Instrumental'},
+            {genrename: 'Jazz'},
         ],
     },
     {
@@ -82,6 +83,7 @@ const trackList = [
             {genrename: 'Electronic'},
             {genrename: 'Hip-Hop'},
             {genrename: 'Instrumental'},
+            {genrename: 'Jazz'},
         ],
     },
     {
@@ -103,6 +105,7 @@ const trackList = [
             {genrename: 'Deep House'},
             {genrename: 'Future House'},
             {genrename: 'Dance'},
+            {genrename: 'Pop'},
             {genrename: 'Electronic'},
         ],
     },
@@ -120,6 +123,10 @@ const trackList = [
         ],
         genres: [
             {genrename: 'House'},
+            {genrename: 'Tech House'},
+            {genrename: 'Techno'},
+            {genrename: 'Minimal Techno'},
+            {genrename: 'UK Garage'},
             {genrename: 'Dance'},
             {genrename: 'Electronic'},
         ],
@@ -234,7 +241,7 @@ const trackList = [
     // Songs self-released by the artist
     {
         url: 'audio/bgm/5e951964784058c9880a89443262e20a',
-        title: 'sometimes i look at nature and envy it\'s tranquilityytrhfdbghyjhgrsiofdjetihjagrtsiohjoifjgtfsjothgrjfsgiogrjafsdiogs',
+        title: 'sometimes i look at nature and envy it\'s tranquility',
         album: 'sometimes i look at nature and envy it\'s tranquility',
         cover: 'img/covers/cc530ba323945df1cd598ddd9fd57e3d',
         artists: [
@@ -250,6 +257,10 @@ const trackList = [
             {genrename: 'Electronic'},
             {genrename: 'Ambient'},
             {genrename: 'Dubstep'},
+            {genrename: 'Shoegaze'},
+            {genrename: 'Dream Pop'},
+            {genrename: 'Synth-pop'},
+            {genrename: 'Pop'},
             {genrename: 'Colour Bass'},
             {genrename: 'Dariacore'},
             {genrename: 'Instrumental'},
@@ -333,6 +344,11 @@ const trackList = [
             {genrename: 'Drum and Bass'},
             {genrename: 'Breakbeat'},
             {genrename: 'Synthwave'},
+            {genrename: 'Synth-pop'},
+            {genrename: 'Pop'},
+            {genrename: 'Indie Rock'},
+            {genrename: 'Alternative Rock'},
+            {genrename: 'Rock'},
             {genrename: 'Vaporwave'},
             {genrename: 'Chill'},
             {genrename: 'Ambient'},
@@ -360,6 +376,11 @@ const trackList = [
             {genrename: 'Drum and Bass'},
             {genrename: 'Breakbeat'},
             {genrename: 'Synthwave'},
+            {genrename: 'Synth-pop'},
+            {genrename: 'Pop'},
+            {genrename: 'Indie Rock'},
+            {genrename: 'Alternative Rock'},
+            {genrename: 'Rock'},
             {genrename: 'Vaporwave'},
             {genrename: 'Chill'},
             {genrename: 'Ambient'},
@@ -384,6 +405,12 @@ const lastPosition = parseFloat(getCookie('lastPosition')) || 0;
 let autoplay = getCookie('autoplay') === 'true';
 const savedVolume = parseInt(getCookie('bgmVolume')) || 70;
 
+let lastfmKey = decodeURIComponent(getCookie('lastfmKey') || '');
+let lastfmSecret = decodeURIComponent(getCookie('lastfmSecret') || '');
+let lastfmUser = decodeURIComponent(getCookie('lastfmUser') || '');
+let lastfmPass = decodeURIComponent(getCookie('lastfmPass') || '');
+let lastfmSession = decodeURIComponent(getCookie('lastfmSession') || '');
+
 const titleEl = document.getElementById('trackTitle');
 const indexEl = document.getElementById('trackIndex');
 const barsEl = document.getElementById('bars');
@@ -391,13 +418,21 @@ const tracklist = document.getElementById('tracklist');
 const btnPlay = document.getElementById('btnPlay');
 const btnPrev = document.getElementById('btnPrev');
 const btnNext = document.getElementById('btnNext');
+const btnShuffle = document.getElementById('btnShuffle');
 const volSlider = document.getElementById('volSlider');
 const volVal = document.getElementById('volVal');
 const seekSlider = document.getElementById('seekSlider');
 const seekVal = document.getElementById('seekVal');
+const chkAutoplay = document.getElementById('chkAutoplay');
+const artistEl = document.getElementById('trackArtists');
 
-const btnShuffle = document.getElementById('btnShuffle');
 btnShuffle.classList.toggle('active', shuffle);
+chkAutoplay.checked = autoplay;
+
+lastfmKeybox.value = lastfmKey;
+lastfmSecretbox.value = lastfmSecret;
+lastfmUserbox.value = lastfmUser;
+lastfmPassbox.value = lastfmPass;
 
 const ctx = new AudioContext();
 const gainNode = ctx.createGain();
@@ -413,6 +448,11 @@ let sourceNode = null;
 let startTime = 0;   // ctx.currentTime when playback started
 let startOffset = 0;  // how far into the track we started from
 
+// ── scrobble state ──────────────────────────────────────────────────────────
+let scrobbleTimer = null;
+let trackStartedAt = null;
+let scrobbled = false;
+
 // decode all tracks upfront
 trackList.forEach((t, i) => {
     fetch(t.url)
@@ -420,7 +460,7 @@ trackList.forEach((t, i) => {
         .then(ab => ctx.decodeAudioData(ab))
         .then(buf => {
             buffers[i] = buf;
-            if (i === 0) {
+            if (i === lastTrack) {
                 indexEl.textContent = 'Ready';
                 // attempt autoplay once first track is decoded
                 if (autoplay && current === lastTrack && !playing) {
@@ -448,6 +488,79 @@ function getButtons() {
     return tracklist.querySelectorAll('.track-btn');
 }
 
+// ── filtering ───────────────────────────────────────────────────────────────
+const filterType = document.getElementById('filterType');
+const filterValue = document.getElementById('filterValue');
+const filterClear = document.getElementById('filterClear');
+
+let activeFilter = {type: '', value: ''};
+
+function getFilterOptions(type) {
+    const seen = new Set();
+    trackList.forEach(t => {
+        if (type === 'genre') t.genres.forEach(g => seen.add(g.genrename));
+        if (type === 'artist') t.artists.forEach(a => seen.add(a.name));
+        if (type === 'album' && t.album) seen.add(t.album);
+        if (type === 'label') t.label.forEach(l => seen.add(l.labelname));
+    });
+    return [...seen].sort();
+}
+
+function applyFilter() {
+    const btns = [...getButtons()];
+    trackList.forEach((t, i) => {
+        let show = true;
+        if (activeFilter.type && activeFilter.value) {
+            if (activeFilter.type === 'genre')
+                show = t.genres.some(g => g.genrename === activeFilter.value);
+            if (activeFilter.type === 'artist')
+                show = t.artists.some(a => a.name === activeFilter.value);
+            if (activeFilter.type === 'album')
+                show = t.album === activeFilter.value;
+            if (activeFilter.type === 'label')
+                show = t.label.some(l => l.labelname === activeFilter.value);
+        }
+        btns[i].style.display = show ? '' : 'none';
+        btns[i].style.display = show ? '' : 'none';
+        btns[i].offsetHeight; // force reflow
+    });
+    const visible = btns.filter(b => b.style.display !== 'none').length;
+    indexEl.textContent = activeFilter.value
+        ? `${visible} of ${trackList.length} tracks`
+        : (current >= 0 ? `Track ${current + 1} of ${trackList.length}` : 'Select a track');
+}
+
+filterType.addEventListener('change', () => {
+    const type = filterType.value;
+    filterValue.innerHTML = '<option value="">— value —</option>';
+    if (type) {
+        getFilterOptions(type).forEach(opt => {
+            const el = document.createElement('option');
+            el.value = opt;
+            el.textContent = opt;
+            filterValue.appendChild(el);
+        });
+        filterValue.disabled = false;
+    } else {
+        filterValue.disabled = true;
+        activeFilter = {type: '', value: ''};
+        applyFilter();
+    }
+});
+
+filterValue.addEventListener('change', () => {
+    activeFilter = {type: filterType.value, value: filterValue.value};
+    applyFilter();
+});
+
+filterClear.addEventListener('click', () => {
+    filterType.value = '';
+    filterValue.innerHTML = '<option value="">— value —</option>';
+    filterValue.disabled = true;
+    activeFilter = {type: '', value: ''};
+    applyFilter();
+});
+
 function formatTime(secs) {
     const m = Math.floor(secs / 60);
     const s = Math.floor(secs % 60);
@@ -459,7 +572,81 @@ function getCurrentTime() {
     return startOffset + (ctx.currentTime - startTime);
 }
 
-const artistEl = document.getElementById('trackArtists');
+const lastfmAPIKey = document.getElementById('lastfmKeybox');
+setCookie('lastfmApiKey', lastfmAPIKey);
+
+
+// ── Last.fm ─────────────────────────────────────────────────────────────────
+function lastfmSig(params) {
+    const sorted = Object.keys(params).sort().map(k => k + params[k]).join('');
+    return md5(sorted + lastfmSecret);
+}
+
+async function lastfmAuth() {
+    if (lastfmSession) return lastfmSession;
+    if (!lastfmKey || !lastfmSecret || !lastfmUser || !lastfmPass) return null;
+    const params = {
+        method: 'auth.getMobileSession',
+        api_key: lastfmKey,
+        username: lastfmUser,
+        password: lastfmPass,
+    };
+    params.api_sig = lastfmSig(params);
+    params.format = 'json';
+    try {
+        const res = await fetch('https://ws.audioscrobbler.com/2.0/', {
+            method: 'POST',
+            body: new URLSearchParams(params)
+        });
+        const data = await res.json();
+        if (data.session) {
+            lastfmSession = data.session.key;
+            setCookie('lastfmSession', lastfmSession);
+            return lastfmSession;
+        }
+        console.error('Last.fm auth failed', data);
+        return null;
+    } catch (e) {
+        console.error('Last.fm auth error', e);
+        return null;
+    }
+}
+
+async function lastfmNowPlaying(track) {
+    const sk = await lastfmAuth();
+    if (!sk) return;
+    const artist = track.artists.map(a => a.name).join(' & ');
+    const params = {
+        method: 'track.updateNowPlaying',
+        api_key: lastfmKey,
+        sk,
+        track: track.title,
+        artist,
+        album: track.album || ''
+    };
+    params.api_sig = lastfmSig(params);
+    params.format = 'json';
+    fetch('https://ws.audioscrobbler.com/2.0/', {method: 'POST', body: new URLSearchParams(params)});
+}
+
+async function lastfmScrobble(track, startedAt) {
+    const sk = await lastfmAuth();
+    if (!sk) return;
+    const artist = track.artists.map(a => a.name).join(' & ');
+    const params = {
+        method: 'track.scrobble',
+        api_key: lastfmKey,
+        sk,
+        track: track.title,
+        artist,
+        album: track.album || '',
+        timestamp: String(startedAt)
+    };
+    params.api_sig = lastfmSig(params);
+    params.format = 'json';
+    fetch('https://ws.audioscrobbler.com/2.0/', {method: 'POST', body: new URLSearchParams(params)});
+}
+
 
 function loadTrack(index, shouldPlay = false) {
     stopCurrent();
@@ -471,8 +658,11 @@ function loadTrack(index, shouldPlay = false) {
     const t = trackList[index];
 
     // title with marquee if too long
-    titleEl.textContent = t.title;
-    titleEl.classList.remove('scrolling');
+    if (t.releaseUrl) {
+        titleEl.innerHTML = `<a href="${t.releaseUrl}" target="_blank" rel="noopener">${t.title}</a>`;
+    } else {
+        titleEl.textContent = t.title;
+    }
     // check after render if it overflows
     requestAnimationFrame(() => {
         if (titleEl.scrollWidth > titleEl.clientWidth) {
@@ -517,25 +707,7 @@ function loadTrack(index, shouldPlay = false) {
             : link;
     }).join('');
 
-
-    // release link — append to artists if present
-    if (t.releaseUrl) {
-        titleEl.innerHTML = `<a href="${t.releaseUrl}" target="_blank" rel="noopener">${t.title}</a>`;
-    } else {
-        titleEl.textContent = t.title;
-    }
-
-    indexEl.textContent = `Track ${index + 1} of ${trackList.length}`;
-    getButtons().forEach((b, i) => b.classList.toggle('active', i === index));
-
-    seekSlider.value = 0;
-    seekVal.textContent = '0:00';
-
-    if (shouldPlay) startPlayback(0);
-    else setPlaying(false);
-
     const albumEl = document.getElementById('trackAlbum');
-
     if (t.album) {
         albumEl.innerHTML = t.releaseUrl
             ? `<a href="${t.releaseUrl}" target="_blank" rel="noopener">${t.album}</a>`
@@ -554,6 +726,65 @@ function loadTrack(index, shouldPlay = false) {
         coverEl.src = '';
         coverEl.classList.remove('visible');
     }
+
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: t.title,
+            artist: t.artists.map(a => a.name).join(' & '),
+            album: t.album || '',
+            artwork: t.cover ? [
+                { src: window.location.origin + window.location.pathname.replace('bgm.php', '') + t.cover, sizes: '250x250', type: 'image/jpeg' }
+            ] : []
+        });
+
+        navigator.mediaSession.setActionHandler('play', () => {
+            ctx.resume();
+            startPlayback(startOffset);
+        });
+        navigator.mediaSession.setActionHandler('pause', () => stopCurrent());
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+            const btns = [...getButtons()];
+            let prev;
+            if (shuffle) {
+                const visible = trackList.map((_, i) => i).filter(i => btns[i].style.display !== 'none');
+                const candidates = visible.filter(i => i !== current);
+                prev = candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : current;
+            } else {
+                prev = current - 1;
+                while (prev >= 0 && btns[prev].style.display === 'none') prev--;
+                if (prev < 0) prev = btns.length - 1;
+                while (prev > 0 && btns[prev].style.display === 'none') prev--;
+            }
+            loadTrack(prev, playing);
+        });
+
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+            const btns = [...getButtons()];
+            let next;
+            if (shuffle) {
+                const visible = trackList.map((_, i) => i).filter(i => btns[i].style.display !== 'none');
+                const candidates = visible.filter(i => i !== current);
+                next = candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : current;
+            } else {
+                next = current + 1;
+                while (next < btns.length && btns[next].style.display === 'none') next++;
+                if (next >= btns.length) {
+                    next = 0;
+                    while (next < btns.length && btns[next].style.display === 'none') next++;
+                }
+            }
+            loadTrack(next, playing);
+        });
+    }
+
+    indexEl.textContent = `Track ${index + 1} of ${trackList.length}`;
+    getButtons().forEach((b, i) => b.classList.toggle('active', i === index));
+
+    seekSlider.value = 0;
+    seekVal.textContent = '0:00';
+
+    if (shouldPlay) startPlayback(0);
+    else setPlaying(false);
 }
 
 function startPlayback(offset) {
@@ -572,14 +803,19 @@ function startPlayback(offset) {
     sourceNode.start(0, offset);
     sourceNode.onended = () => {
         if (playing) {
+            const btns = [...getButtons()];
             let next;
             if (shuffle) {
-                do {
-                    next = Math.floor(Math.random() * trackList.length);
-                }
-                while (next === current && trackList.length > 1);
+                const visible = trackList.map((_, i) => i).filter(i => btns[i].style.display !== 'none');
+                const candidates = visible.filter(i => i !== current);
+                next = candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : current;
             } else {
-                next = (current + 1) % trackList.length;
+                next = current + 1;
+                while (next < btns.length && btns[next].style.display === 'none') next++;
+                if (next >= btns.length) {
+                    next = 0;
+                    while (next < btns.length && btns[next].style.display === 'none') next++;
+                }
             }
             loadTrack(next, true);
         }
@@ -588,6 +824,23 @@ function startPlayback(offset) {
     startTime = ctx.currentTime;
     startOffset = offset;
     setPlaying(true);
+    const mediaAudio = document.getElementById('mediaSessionAudio');
+    mediaAudio.play().catch(() => {
+    });
+
+    // last.fm now playing + scrobble timer
+    trackStartedAt = Math.floor(Date.now() / 1000);
+    scrobbled = false;
+    lastfmNowPlaying(trackList[current]);
+
+    clearTimeout(scrobbleTimer);
+    const scrobbleAt = Math.min(240, Math.floor(buf.duration / 2)) * 1000;
+    scrobbleTimer = setTimeout(() => {
+        if (playing && !scrobbled) {
+            scrobbled = true;
+            lastfmScrobble(trackList[current], trackStartedAt);
+        }
+    }, scrobbleAt);
 }
 
 function stopCurrent() {
@@ -599,12 +852,17 @@ function stopCurrent() {
     }
     startOffset = getCurrentTime();
     setPlaying(false);
+    const mediaAudio = document.getElementById('mediaSessionAudio');
+    mediaAudio.pause();
 }
 
 function setPlaying(state) {
     playing = state;
     btnPlay.innerHTML = state ? '&#9646;&#9646;' : '&#9654;';
     barsEl.classList.toggle('playing', state);
+    if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = state ? 'playing' : 'paused';
+    }
 }
 
 // seek bar update loop
@@ -633,19 +891,35 @@ btnPlay.addEventListener('click', () => {
 });
 
 btnPrev.addEventListener('click', () => {
-    const prev = current <= 0 ? trackList.length - 1 : current - 1;
+    const btns = [...getButtons()];
+    let prev;
+    if (shuffle) {
+        const visible = trackList.map((_, i) => i).filter(i => btns[i].style.display !== 'none');
+        const candidates = visible.filter(i => i !== current);
+        prev = candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : current;
+    } else {
+        prev = current - 1;
+        while (prev >= 0 && btns[prev].style.display === 'none') prev--;
+        if (prev < 0) prev = btns.length - 1;
+        while (prev > 0 && btns[prev].style.display === 'none') prev--;
+    }
     loadTrack(prev, playing);
 });
 
 btnNext.addEventListener('click', () => {
+    const btns = [...getButtons()];
     let next;
     if (shuffle) {
-        do {
-            next = Math.floor(Math.random() * trackList.length);
-        }
-        while (next === current && trackList.length > 1);
+        const visible = trackList.map((_, i) => i).filter(i => btns[i].style.display !== 'none');
+        const candidates = visible.filter(i => i !== current);
+        next = candidates.length ? candidates[Math.floor(Math.random() * candidates.length)] : current;
     } else {
-        next = current >= trackList.length - 1 ? 0 : current + 1;
+        next = current + 1;
+        while (next < btns.length && btns[next].style.display === 'none') next++;
+        if (next >= btns.length) {
+            next = 0;
+            while (next < btns.length && btns[next].style.display === 'none') next++;
+        }
     }
     loadTrack(next, playing);
 });
@@ -656,8 +930,6 @@ btnShuffle.addEventListener('click', () => {
     btnShuffle.classList.toggle('active', shuffle);
 });
 
-const chkAutoplay = document.getElementById('chkAutoplay');
-chkAutoplay.checked = autoplay;
 chkAutoplay.addEventListener('change', () => {
     autoplay = chkAutoplay.checked;
     setCookie('autoplay', autoplay);
@@ -677,12 +949,32 @@ seekSlider.addEventListener('input', () => {
 });
 
 volSlider.addEventListener('input', () => {
-    const v = volSlider.value / 100;
-    gainNode.gain.value = v;
+    gainNode.gain.value = volSlider.value / 100;
     volVal.textContent = volSlider.value + '%';
     setCookie('bgmVolume', volSlider.value); // add this
 });
-
+lastfmKeybox.addEventListener('input', () => {
+    lastfmKey = lastfmKeybox.value;
+    setCookie('lastfmKey', encodeURIComponent(lastfmKey));
+});
+lastfmSecretbox.addEventListener('input', () => {
+    lastfmSecret = lastfmSecretbox.value;
+    lastfmSession = '';
+    setCookie('lastfmSecret', encodeURIComponent(lastfmSecret));
+    setCookie('lastfmSession', '');
+});
+lastfmUserbox.addEventListener('input', () => {
+    lastfmUser = lastfmUserbox.value;
+    lastfmSession = '';
+    setCookie('lastfmUser', encodeURIComponent(lastfmUser));
+    setCookie('lastfmSession', '');
+});
+lastfmPassbox.addEventListener('input', () => {
+    lastfmPass = lastfmPassbox.value;
+    lastfmSession = '';
+    setCookie('lastfmPass', encodeURIComponent(lastfmPass));
+    setCookie('lastfmSession', '');
+});
 // restore last track and position
 loadTrack(lastTrack, false);
 if (lastPosition > 0) {
