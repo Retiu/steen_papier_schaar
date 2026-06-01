@@ -124,7 +124,8 @@
     <p class="footer-text">MUSIC PLAYER</p>
     <p class="footer-text">Music mostly from <a href="https://untonemusic.com">UNTONE Music</a></p>
     <audio id="mediaSessionAudio" loop>
-        <source src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" type="audio/wav">
+        <source src="data:audio/wav;base64,UklGRlQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+                type="audio/wav">
     </audio>
 </div>
 

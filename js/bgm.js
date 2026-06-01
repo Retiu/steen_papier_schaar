@@ -390,6 +390,10 @@ const trackList = [
     },
 ];
 
+function cookiesAllowed() {
+    return getCookie('cookiesAccepted') === 'true';
+}
+
 function setCookie(name, value) {
     document.cookie = `${name}=${value};path=/;max-age=31536000`;
 }
@@ -573,7 +577,7 @@ function getCurrentTime() {
 }
 
 const lastfmAPIKey = document.getElementById('lastfmKeybox');
-setCookie('lastfmApiKey', lastfmAPIKey);
+if (cookiesAllowed()) setCookie('lastfmApiKey', lastfmAPIKey);
 
 
 // ── Last.fm ─────────────────────────────────────────────────────────────────
@@ -601,7 +605,7 @@ async function lastfmAuth() {
         const data = await res.json();
         if (data.session) {
             lastfmSession = data.session.key;
-            setCookie('lastfmSession', lastfmSession);
+            if (cookiesAllowed()) setCookie('lastfmSession', lastfmSession);
             return lastfmSession;
         }
         console.error('Last.fm auth failed', data);
@@ -652,7 +656,7 @@ function loadTrack(index, shouldPlay = false) {
     stopCurrent();
 
     current = index;
-    setCookie('lastTrack', index);
+    if (cookiesAllowed()) setCookie('lastTrack', index);
     startOffset = 0;
 
     const t = trackList[index];
@@ -733,7 +737,11 @@ function loadTrack(index, shouldPlay = false) {
             artist: t.artists.map(a => a.name).join(' & '),
             album: t.album || '',
             artwork: t.cover ? [
-                { src: window.location.origin + window.location.pathname.replace('bgm.php', '') + t.cover, sizes: '250x250', type: 'image/jpeg' }
+                {
+                    src: window.location.origin + window.location.pathname.replace('bgm.php', '') + t.cover,
+                    sizes: '250x250',
+                    type: 'image/jpeg'
+                }
             ] : []
         });
 
@@ -873,7 +881,7 @@ setInterval(() => {
     const ct = getCurrentTime();
     seekSlider.value = (ct / buf.duration) * 100;
     seekVal.textContent = formatTime(ct);
-    setCookie('lastPosition', ct);   // add this line
+    if (cookiesAllowed()) setCookie('lastPosition', ct);   // add this line
 }, 200);
 
 // controls
@@ -926,13 +934,13 @@ btnNext.addEventListener('click', () => {
 
 btnShuffle.addEventListener('click', () => {
     shuffle = !shuffle;
-    setCookie('shuffle', shuffle);
+    if (cookiesAllowed()) setCookie('shuffle', shuffle);
     btnShuffle.classList.toggle('active', shuffle);
 });
 
 chkAutoplay.addEventListener('change', () => {
     autoplay = chkAutoplay.checked;
-    setCookie('autoplay', autoplay);
+    if (cookiesAllowed()) setCookie('autoplay', autoplay);
 });
 
 seekSlider.addEventListener('input', () => {
@@ -951,29 +959,29 @@ seekSlider.addEventListener('input', () => {
 volSlider.addEventListener('input', () => {
     gainNode.gain.value = volSlider.value / 100;
     volVal.textContent = volSlider.value + '%';
-    setCookie('bgmVolume', volSlider.value); // add this
+    if (cookiesAllowed()) setCookie('bgmVolume', volSlider.value); // add this
 });
 lastfmKeybox.addEventListener('input', () => {
     lastfmKey = lastfmKeybox.value;
-    setCookie('lastfmKey', encodeURIComponent(lastfmKey));
+    if (cookiesAllowed()) setCookie('lastfmKey', encodeURIComponent(lastfmKey));
 });
 lastfmSecretbox.addEventListener('input', () => {
     lastfmSecret = lastfmSecretbox.value;
     lastfmSession = '';
-    setCookie('lastfmSecret', encodeURIComponent(lastfmSecret));
-    setCookie('lastfmSession', '');
+    if (cookiesAllowed()) setCookie('lastfmSecret', encodeURIComponent(lastfmSecret));
+    if (cookiesAllowed()) setCookie('lastfmSession', '');
 });
 lastfmUserbox.addEventListener('input', () => {
     lastfmUser = lastfmUserbox.value;
     lastfmSession = '';
-    setCookie('lastfmUser', encodeURIComponent(lastfmUser));
-    setCookie('lastfmSession', '');
+    if (cookiesAllowed()) setCookie('lastfmUser', encodeURIComponent(lastfmUser));
+    if (cookiesAllowed()) setCookie('lastfmSession', '');
 });
 lastfmPassbox.addEventListener('input', () => {
     lastfmPass = lastfmPassbox.value;
     lastfmSession = '';
-    setCookie('lastfmPass', encodeURIComponent(lastfmPass));
-    setCookie('lastfmSession', '');
+    if (cookiesAllowed()) setCookie('lastfmPass', encodeURIComponent(lastfmPass));
+    if (cookiesAllowed()) setCookie('lastfmSession', '');
 });
 // restore last track and position
 loadTrack(lastTrack, false);

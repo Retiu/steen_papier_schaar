@@ -17,10 +17,35 @@ let highscoreTimeout = false;
 function setCookie(name, value) {
     document.cookie = `${name}=${value};path=/;max-age=31536000`;
 }
+
 function getCookie(name) {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
     return match ? match[2] : null;
 }
+
+const cookieBanner = document.getElementById('cookieBanner');
+if (getCookie('cookiesAccepted') !== null) {
+    cookieBanner.style.display = 'none';
+} else {
+    setTimeout(() => cookieBanner.classList.add('visible'), 100);
+}
+
+document.getElementById('cookieAccept').addEventListener('click', () => {
+    setCookie('cookiesAccepted', 'true');
+    cookieBanner.classList.remove('visible');
+    setTimeout(() => cookieBanner.style.display = 'none', 400);
+});
+
+document.getElementById('cookieDecline').addEventListener('click', () => {
+    document.cookie = 'cookiesAccepted=false;path=/;max-age=31536000';
+    cookieBanner.classList.remove('visible');
+    setTimeout(() => cookieBanner.style.display = 'none', 400);
+});
+
+function cookiesAllowed() {
+    return getCookie('cookiesAccepted') === 'true';
+}
+
 
 // load stats from cookies
 let highscore = parseInt(getCookie('highscore')) || 0;
@@ -136,13 +161,13 @@ mutebuttonsfxBtn.classList.toggle('muted', buttonsfxMuted);
 
 mutesfxBtn.addEventListener('click', () => {
     sfxMuted = !sfxMuted;
-    setCookie('sfxMuted', sfxMuted);
+    if (cookiesAllowed()) setCookie('sfxMuted', sfxMuted);
     mutesfxBtn.textContent = sfxMuted ? 'Unmute All SFX' : 'Mute All SFX';
     mutesfxBtn.classList.toggle('muted', sfxMuted);
 });
 mutebuttonsfxBtn.addEventListener('click', () => {
     buttonsfxMuted = !buttonsfxMuted;
-    setCookie('buttonsfxMuted', buttonsfxMuted);
+    if (cookiesAllowed()) setCookie('buttonsfxMuted', buttonsfxMuted);
     mutebuttonsfxBtn.textContent = buttonsfxMuted ? 'Unmute Button SFX' : 'Mute Button SFX';
     mutebuttonsfxBtn.classList.toggle('muted', buttonsfxMuted);
 });
@@ -154,7 +179,7 @@ function updateScore() {
         if (score > highscore) {
             highscore = score;
             document.querySelector("#highscore").innerHTML = "" + highscore;
-            setCookie('highscore', highscore);
+            if (cookiesAllowed()) setCookie('highscore', highscore);
             newHighscoreReached = true;
         }
     } else if (winnerChoice === "you lost." || winnerChoice === "tie.") {
@@ -172,17 +197,17 @@ function WinsLosses() {
     if (winnerChoice === "you won!") {
         winsScore++
         document.querySelector("#winscore").innerHTML = "" + winsScore;
-        setCookie('winsScore', winsScore);
+        if (cookiesAllowed()) setCookie('winsScore', winsScore);
     }
     if (winnerChoice === "tie.") {
         tiesScore++
         document.querySelector("#tiescore").innerHTML = "" + tiesScore;
-        setCookie('tiesScore', tiesScore);
+        if (cookiesAllowed()) setCookie('tiesScore', tiesScore);
     }
     if (winnerChoice === "you lost.") {
         lossesScore++
         document.querySelector("#losescore").innerHTML = "" + lossesScore;
-        setCookie('lossesScore', lossesScore);
+        if (cookiesAllowed()) setCookie('lossesScore', lossesScore);
     }
 }
 
@@ -216,12 +241,16 @@ function playSound() {
 // reset stats
 document.getElementById('resetStats').addEventListener('click', () => {
     if (!confirm('Reset all stats?')) return;
-    highscore = 0; winsScore = 0; lossesScore = 0; tiesScore = 0; score = 0;
+    highscore = 0;
+    winsScore = 0;
+    lossesScore = 0;
+    tiesScore = 0;
+    score = 0;
     ['highscore', 'winsScore', 'lossesScore', 'tiesScore'].forEach(k => setCookie(k, 0));
-    document.querySelector("#highscore").innerHTML    = 0;
-    document.querySelector("#winscore").innerHTML     = 0;
-    document.querySelector("#losescore").innerHTML    = 0;
-    document.querySelector("#tiescore").innerHTML     = 0;
+    document.querySelector("#highscore").innerHTML = 0;
+    document.querySelector("#winscore").innerHTML = 0;
+    document.querySelector("#losescore").innerHTML = 0;
+    document.querySelector("#tiescore").innerHTML = 0;
     document.querySelector("#currentscore").innerHTML = 0;
 });
 
@@ -236,4 +265,3 @@ btns.forEach(function (btn) {
         playSound();
     });
 });
-

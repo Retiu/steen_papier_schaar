@@ -592,6 +592,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     width: 120px;
     flex: none;
 }
+
 .filter-row select#filterValue {
     width: 200px;
 }
